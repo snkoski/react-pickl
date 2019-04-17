@@ -11,8 +11,8 @@ class App extends Component {
     return (
       <div className="App">
         {/*<GameContainer />*/}
-        {/*<GamesSplit />*/}
-        <Fetch />
+        <GamesSplit />
+        {/*<Fetch />*/}
 
       </div>
     );

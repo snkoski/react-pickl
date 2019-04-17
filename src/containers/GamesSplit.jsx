@@ -4,82 +4,42 @@ import '../App.css';
 import GameCardSplit from '../components/Game/GameCardSplit';
 
 class GameContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        games: [
-          {
-            id: "51273",
-            scheduleStatus: "Normal",
-            originalDate: null,
-            originalTime: null,
-            delayedOrPostponedReason: null,
-            date: "2019-03-28",
-            time: "1:05PM",
-            awayTeam: "127",
-            homeTeam: "126",
-            location: "Nationals Park"
-          },
-          {
-              id: "51272",
-              scheduleStatus: "Normal",
-              originalDate: null,
-              originalTime: null,
-              delayedOrPostponedReason: null,
-              date: "2019-03-28",
-              time: "1:05PM",
-              awayTeam: "111",
-              homeTeam: "114",
-              location: "Yankee Stadium"
-          }
-        ],
-        teams: [
-          {
-            ID: "127",
-            City: "New York",
-            Name: "Mets",
-            Abbreviation: "NYM",
-            Logo: "https://www.mlbstatic.com/mlb.com/images/share/121.jpg"
-        },
-        {
-            ID: "126",
-            City: "Washington",
-            Name: "Nationals",
-            Abbreviation: "WAS",
-            Logo: "https://www.mlbstatic.com/mlb.com/images/share/120.jpg"
-        },
-        {
-            ID: "111",
-            City: "Baltimore",
-            Name: "Orioles",
-            Abbreviation: "BAL",
-            Logo: "https://www.mlbstatic.com/mlb.com/images/share/110.jpg"
-        },
-        {
-            ID: "114",
-            City: "New York",
-            Name: "Yankees",
-            Abbreviation: "NYY",
-            Logo: "https://www.mlbstatic.com/mlb.com/images/share/147.jpg"
-        }
-      ]
+    constructor(props) {
+        super(props);
+        this.state = {
+            games: null,
+            teams: null
+        };
     }
-  }
 
-  render() {
-    return (
-      <div className="GameContainer">
-        {this.state.games.map((game) => {
+    componentDidMount() {
+        fetch('http://localhost:5000/api/games/today')
+            .then(response => response.json())
+            .then(games => this.setState({ games }));
+        fetch('http://localhost:5000/api/teams')
+            .then(response => response.json())
+            .then(teams => this.setState({ teams }))
+        console.log(this.state);
+    }
 
-          let awayTeam = this.state.teams.filter(team => team.ID === game.awayTeam)
+    render() {
+        if (this.state.games === null || this.state.teams === null) {
+            console.log("NOPE")
+            return null
+        }
+        return (
+            <div className="GameContainer">
+                {this.state.games.game.map((game) => {
 
-          let homeTeam = this.state.teams.filter(team => team.ID === game.homeTeam)
+                    let awayTeam = this.state.teams.team.filter(team => team.id === game.away_team)
 
-          return <GameCardSplit game={game} awayTeam={awayTeam[0]} homeTeam={homeTeam[0]}/>
-        })}
-      </div>
-    )
-  }
+                    let homeTeam = this.state.teams.team.filter(team => team.id === game.home_team)
+
+                    return <GameCardSplit game={game} awayTeam={awayTeam[0]} homeTeam={homeTeam[0]} />
+                })}
+            </div>
+        )
+    }
 }
 
 export default GameContainer;
