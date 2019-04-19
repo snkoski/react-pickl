@@ -7,3 +7,9 @@
 .nav .logo {
     justify-self: start;
 }
+
+@media (max-width: 540px) {
+    .nav {
+        display: none;
+    }
+}

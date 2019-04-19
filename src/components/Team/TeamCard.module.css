@@ -1,0 +1,33 @@
+.TeamCard {
+    border: 2px solid red;
+    padding: 5px;
+    text-align: center;
+    box-sizing: border-box;
+
+    /* min-width: 255px; */
+}
+
+.TeamCard img{
+    height: 20vh;
+    width: 100%;
+}    
+
+.City {
+    color: red;
+}
+
+.Name {
+    font-size: 2em;
+    font-weight: 900;
+}
+
+@media (max-width: 540px) {
+    .TeamCard {
+        border: 1px dotted blue;
+        /* width: 320px; */
+    }
+    
+    .TeamCard img{
+        /* width: 50%; */
+    }
+}

@@ -1,0 +1,23 @@
+.TeamContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: column;
+    grid-gap: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+
+}
+
+@media (max-width: 540px) {
+    .TeamContainer {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        /* grid-auto-flow: row; */
+        /* background-color: red; */
+        grid-gap: 5px;
+        /* width: 320px; */
+        border: 2px dotted orange;
+        /* justify-content: center; */
+    }
+}

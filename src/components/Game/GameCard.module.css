@@ -1,0 +1,23 @@
+.GameCard {
+    border: 2px solid black;
+    text-align: center;
+    box-sizing: border-box;
+    display: grid;
+    /* min-width: 530px; */
+    /* grid-template-columns: repeat(auto-fit, minmax()) */
+}
+
+.GameCard p {
+    margin: 0;
+}
+
+@media (max-width: 540px) {
+    .GameCard {
+        /* display: grid; */
+        /* grid-template-columns: 300px; */
+        /* grid-auto-flow: row; */
+        /* width: 320px; */
+        border: 2px dotted green;
+
+    }
+}

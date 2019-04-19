@@ -10,9 +10,6 @@ class Profile extends Component {
     }
 
     componentDidMount(){
-        // fetch('http://localhost:5000/api/users/' + localStorage.id)
-        //     .then(response => response.json())
-        //     .then(user => this.setState({ user }));
         return axios
         .get('http://localhost:5000/api/users/' + localStorage.id, {
             headers: { 'Authorization': 'Bearer ' + localStorage.token}
