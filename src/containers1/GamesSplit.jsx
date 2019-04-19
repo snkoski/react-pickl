@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-import GameCardSplit from '../components/Game/GameCardSplit';
+import GameCardSplit from '../components1/Game/GameCardSplit';
 
 class GameContainer extends Component {
     constructor(props) {

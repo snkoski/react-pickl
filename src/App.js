@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
-import './App.css';
 
-import GameContainer from './containers/GameContainer';
-import Fetch from './containers/fetch';
-import GamesSplit from './containers/GamesSplit';
+import Navbar from './components/Nav/Navbar';
 
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        {/*<GameContainer />*/}
-        <GamesSplit />
-        {/*<Fetch />*/}
-
-      </div>
-    );
+class App3 extends Component {
+    render() {
+      return (
+        <div className="App">
+          <Navbar />
+  
+        </div>
+      );
+    }
   }
-}
-
-export default App;
+  
+  export default App3;
+  

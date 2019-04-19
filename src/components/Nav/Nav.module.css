@@ -1,0 +1,9 @@
+.nav {
+    background-color: red;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+}
+
+.nav .logo {
+    justify-self: start;
+}
