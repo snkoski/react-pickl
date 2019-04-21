@@ -12,14 +12,42 @@ export const placeVote = newVote => {
         team_id: newVote.team_id
     }, config)
     .then(resp => {
-        console.log("IN PLACE VOTE", resp)
         return resp.data
-        // let votes = localStorage.getItem('votes')
-        // votes.push(resp.data.vote)
-        // localStorage.setItem('votes', votes)
-        // return resp.data
     })
-    // .catch(err => {
-    //     console.log(err)
-    // })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+export const getTeams = () => {
+    return axios
+    .get('teams')
+    .then(resp => {
+        return resp.data.team
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+export const getTodaysGames = () => {
+    return axios
+    .get('games/today')
+    .then(resp => {
+        return resp.data.game
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+export const getUserVotesToday = (id) => {
+    return axios
+    .get(`votes/${id}/today`)
+    .then(resp => {
+        return resp.data.votes
+    })
+    .catch(err => {
+        console.log(err)
+    })
 }

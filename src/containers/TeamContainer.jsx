@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import TeamCard from '../components/Team/TeamCard';
 import classes from './TeamContainer.module.css';

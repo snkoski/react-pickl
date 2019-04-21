@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import GameCard from '../components/Game/GameCard';
-import { placeVote } from '../components/UserFunction';
+import { placeVote, getTeams, getTodaysGames, getUserVotesToday } from '../components/UserFunction';
 import classes from './GameContainer.module.css';
 
 class GameContainer extends Component {
@@ -18,24 +18,23 @@ class GameContainer extends Component {
         };
         axios.defaults.baseURL = 'http://localhost:5000/api/';
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
-
-        // const getTeams = () => {
-        //     return axios
-        //     .get('http://localhost:5000/api/teams')
-        //     .then(resp => this.setState({ teams: resp.data.teams }))
-        // }
     }
 
     
 
     componentDidMount() {
-        axios.get('games/today')
-            .then(resp => this.setState({ games: resp.data.game }))
-        axios.get('teams')
-            .then(resp => this.setState({ teams: resp.data.team }))
-        axios.get('votes/1/today')
-            .then(resp => this.setState({ votes: resp.data.votes }))
+        getTeams()
+            .then(teams => this.setState({ teams }))
+        getTodaysGames()
+            .then(games => this.setState({ games }))
+        getUserVotesToday(this.state.user.id)
+            .then(votes => this.setState({ votes }))
     }
+
+    // getTeams() {
+    //     axios.get('teams')
+    //         .then(resp => this.setState({ teams: resp.data.team }))
+    // }
 
     handleVote = (newVote) => {
         const vote = {
