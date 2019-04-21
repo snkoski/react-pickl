@@ -10,7 +10,9 @@ export const placeVote = newVote => {
         user_id: newVote.user_id,
         game_id: newVote.game_id,
         team_id: newVote.team_id
-    }, config)
+    }, {
+        headers: {'Authorizatin': 'Bearer ' + localStorage.getItem('token')}
+    })
     .then(resp => {
         return resp.data
     })

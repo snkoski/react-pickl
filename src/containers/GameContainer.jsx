@@ -11,49 +11,43 @@ class GameContainer extends Component {
         this.state = {
             games: null,
             teams: null,
-            user: {
-                id: 1
-            },
             votes: []
         };
         axios.defaults.baseURL = 'http://localhost:5000/api/';
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
     }
 
-    
-
     componentDidMount() {
         getTeams()
             .then(teams => this.setState({ teams }))
         getTodaysGames()
             .then(games => this.setState({ games }))
-        getUserVotesToday(this.state.user.id)
-            .then(votes => this.setState({ votes }))
+        getUserVotesToday(this.props.currentUser.id)
+                .then(votes => this.setState({ votes }))
     }
 
-    // getTeams() {
-    //     axios.get('teams')
-    //         .then(resp => this.setState({ teams: resp.data.team }))
+    // componentDidUpdate(prevProps) {
+//         if (this.props.currentUser.id !== prevProps.currentUser.id) {
+//             getUserVotesToday(this.props.currentUser.id)
+//                 .then(votes => this.setState({ votes }))
+//         }
     // }
 
     handleVote = (newVote) => {
         const vote = {
-            user_id: this.state.user.id,
+            user_id: this.props.currentUser.id,
             game_id: newVote[0],
             team_id: newVote[1]
         }
         placeVote(vote)
         .then(resp =>{ 
+            console.log("HANDLE VOTE", resp)
             var filteredVotes = this.state.votes.filter(vote => vote.id !== resp.vote.id)
-            if (this.state.user.id === 1) {
                 this.setState({ votes: [...filteredVotes, resp.vote]})
-            }
         }, console.log("POST VOTE", this.state))
     }
 
     render() {
-        console.log('IN RENDER', this.state);
-
         if (this.state.games === null || this.state.teams === null) {
             return null
         }
