@@ -48,6 +48,8 @@ class GameContainer extends Component {
     }
 
     render() {
+        let loggedIn = !!this.props.currentUser.id
+        console.log("GAME CONTAINER RENDER", loggedIn)
         if (this.state.games === null || this.state.teams === null) {
             return null
         }
@@ -59,7 +61,7 @@ class GameContainer extends Component {
 
                     let homeTeam = this.state.teams.filter(team => team.id === game.home_team)
 
-                    return <GameCard key={`game-${game.id}`} game={game} awayTeam={awayTeam[0]} homeTeam={homeTeam[0]} handleVote={this.handleVote} />
+                    return <GameCard key={`game-${game.id}`} game={game} currentUser={this.props.currentUser} awayTeam={awayTeam[0]} homeTeam={homeTeam[0]} handleVote={this.handleVote} />
                 })}
             </div>
         )

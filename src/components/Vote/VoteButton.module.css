@@ -1,0 +1,7 @@
+.ButtonDisabled {
+    pointer-events: none
+}
+
+.ButtonEnabled {
+    pointer-events: all
+}
