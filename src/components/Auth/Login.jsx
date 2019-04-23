@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { login } from './AuthFunctions';
+import { connect } from 'react-redux';
+
+import { userActions, addUserAction } from '../../actions/userActions';
+
 
 class Login extends Component {
     constructor(){
@@ -26,9 +30,14 @@ class Login extends Component {
 
             if(!res.error) {
                 this.props.onLogin(res.user)
+                this.addUserAction(res.user)
                 this.props.history.push('/')
             }
         })
+    }
+
+    addUserAction = (user) => {
+        this.props.poopAction(user);
     }
 
     render() {
@@ -63,4 +72,13 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+    ...state
+})
+
+const mapDispatchToProps = dispatch => ({
+    poopAction: (user) => dispatch(addUserAction(user))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+// export default Login;

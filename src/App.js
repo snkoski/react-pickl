@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Navbar from './components/Nav/Navbar';
 import GameContainer from './containers/GameContainer';
 import Login from './components/Auth/Login';
 import Home from './containers/Home'
 import Axios from 'axios';
+
+import { addUserAction, removeUserAction } from './actions/userActions';
 
 class App extends Component {
     constructor(props) {
@@ -31,6 +34,10 @@ class App extends Component {
                         }
                     })
                 })
+                .then(() => {
+                    this.addUserAction(this.state.auth.currentUser)
+                })
+                
         }
     }
 
@@ -41,11 +48,12 @@ class App extends Component {
             }
         }, () => {
             localStorage.clear()
+            this.removeUserAction()
         })
+
     }
 
     handleLogin = (user) => {
-        console.log("IN HANDLE LOGIN USER", user)
         this.setState({
             auth: {
                 currentUser: user
@@ -53,14 +61,25 @@ class App extends Component {
         })
     }
 
+    addUserAction = (user) => {
+        this.props.poopAction(user);
+    }
+
+    removeUserAction = () => {
+        this.props.removeUserAction();
+    }
+
+
+
     render() {
-        console.log("APP RENDER", this.state)
         const props = this.state.auth
-        const loginProps = {'login': this.handleLogin}
         return (
             <div className="App">
                 <Navbar onLogout={this.handleLogout} onLogin={this.handleLogin} />
                 <div>
+                    {
+                            JSON.stringify(this.props)
+                        }
                     <Switch>
                         <Route path='/login' render={(routeProps) => (<Login {...routeProps} onLogin={this.handleLogin} />)} />
                         <Route path='/' render={(routeProps) => (<GameContainer {...routeProps} {...props} />)} />
@@ -71,4 +90,13 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => ({
+    ...state
+})
+
+const mapDispatchToProps = dispatch => ({
+    poopAction: (user) => dispatch(addUserAction(user)),
+    removeUserAction: () => dispatch(removeUserAction())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

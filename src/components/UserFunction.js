@@ -4,7 +4,7 @@ let config = {
     headers: {'Authorization': "Bearer " + token}
 };
 
-export const placeVote = newVote => {
+export const placeVote = (newVote) => {
     return axios
     .post('http://localhost:5000/api/votes', {
         user_id: newVote.user_id,

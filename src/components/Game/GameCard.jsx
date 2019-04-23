@@ -4,7 +4,7 @@ import TeamContainer from '../../containers/TeamContainer';
 import classes from './GameCard.module.css';
 
 const GameCard = props => {
-    let GCLogged = !! props.currentUser.id
+    let GCLogged = !!props.currentUser.id
     console.log("GAME CARD RENDER", props)
     return (
     <div className={classes.GameCard}>

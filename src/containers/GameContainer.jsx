@@ -23,15 +23,15 @@ class GameContainer extends Component {
         getTodaysGames()
             .then(games => this.setState({ games }))
         getUserVotesToday(this.props.currentUser.id)
-                .then(votes => this.setState({ votes }))
+            .then(votes => this.setState({ votes }))
     }
 
-    // componentDidUpdate(prevProps) {
-//         if (this.props.currentUser.id !== prevProps.currentUser.id) {
-//             getUserVotesToday(this.props.currentUser.id)
-//                 .then(votes => this.setState({ votes }))
-//         }
-    // }
+    componentDidUpdate(prevProps) {
+        if (this.props.currentUser.id !== prevProps.currentUser.id) {
+            getUserVotesToday(this.props.currentUser.id)
+                .then(votes => this.setState({ votes }))
+        }
+    }
 
     handleVote = (newVote) => {
         const vote = {
