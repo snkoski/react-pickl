@@ -1,13 +1,13 @@
 export const addUserAction = (user) => dispatch => {
     dispatch({
-        type: 'VOTE_ACTION',
+        type: 'ADD_USER_AUTH',
         payload: user
     })
 }
 
 export const removeUserAction = () => dispatch => {
     dispatch({
-        type: 'REMOVE_USER',
+        type: 'REMOVE_USER_AUTH',
         payload: {}
     })
 }

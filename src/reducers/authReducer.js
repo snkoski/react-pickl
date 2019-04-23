@@ -1,14 +1,10 @@
 export default (state = {user: {auth: 'none'}}, action) => {
     switch (action.type) {
-        case 'SIMPLE_ACTION' :
-        return {
-            result: action.payload
-        }
-        case 'VOTE_ACTION' :
+        case 'ADD_USER_AUTH' :
         return {
             user: action.payload
         }
-        case 'REMOVE_USER' :
+        case 'REMOVE_USER_AUTH' :
         return {
             user: action.payload
         }

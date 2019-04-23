@@ -62,7 +62,7 @@ class App extends Component {
     }
 
     addUserAction = (user) => {
-        this.props.poopAction(user);
+        this.props.addUserAction(user);
     }
 
     removeUserAction = () => {
@@ -95,7 +95,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    poopAction: (user) => dispatch(addUserAction(user)),
+    addUserAction: (user) => dispatch(addUserAction(user)),
     removeUserAction: () => dispatch(removeUserAction())
 })
 

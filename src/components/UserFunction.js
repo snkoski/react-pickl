@@ -1,8 +1,4 @@
 import axios from 'axios';
-let token = localStorage.getItem('token')
-let config = {
-    headers: {'Authorization': "Bearer " + token}
-};
 
 export const placeVote = (newVote) => {
     return axios

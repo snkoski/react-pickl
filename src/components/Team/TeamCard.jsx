@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import VoteButton from '../Vote/VoteButton';
 
 import classes from './TeamCard.module.css';
 
 const TeamCard = props => {
-    console.log("TEAM CARD", props)
+    // console.log("TEEAMCARD", props)
     return(
     <div className={classes.TeamCard}>
         <p className={classes.City}>{props.team.city}</p>
@@ -14,5 +15,10 @@ const TeamCard = props => {
     </div>
 )};
 
+TeamCard.propTypes = {
+    gameID: PropTypes.number,
+    // handleVote:
+    team: PropTypes.object
+}
+
 export default TeamCard;
-// currentUser={props.currentUser}

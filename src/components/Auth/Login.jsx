@@ -37,10 +37,12 @@ class Login extends Component {
     }
 
     addUserAction = (user) => {
-        this.props.poopAction(user);
+        this.props.addUserAction(user);
     }
 
     render() {
+        console.log("APP", this.props)
+
         return (
             <div>
                 <form noValidate onSubmit={this.onSubmit}>
@@ -77,8 +79,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    poopAction: (user) => dispatch(addUserAction(user))
+    addUserAction: (user) => dispatch(addUserAction(user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-// export default Login;

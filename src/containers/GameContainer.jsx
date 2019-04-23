@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+
+import { addVote } from '../actions/voteActions';
 
 import GameCard from '../components/Game/GameCard';
 import { placeVote, getTeams, getTodaysGames, getUserVotesToday } from '../components/UserFunction';
@@ -19,7 +22,8 @@ class GameContainer extends Component {
 
     componentDidMount() {
         getTeams()
-            .then(teams => this.setState({ teams }))
+            .then(teams => this.setState({ teams }), console.log("AFTER TEAM FETCH", this.state))
+            .then(() => console.log("AFTER TEAM FETCH NEXT", this.state))
         getTodaysGames()
             .then(games => this.setState({ games }))
         getUserVotesToday(this.props.currentUser.id)
@@ -30,6 +34,9 @@ class GameContainer extends Component {
         if (this.props.currentUser.id !== prevProps.currentUser.id) {
             getUserVotesToday(this.props.currentUser.id)
                 .then(votes => this.setState({ votes }))
+                .then(() => {
+                    this.addVote(this.state.votes)
+                })
         }
     }
 
@@ -41,15 +48,18 @@ class GameContainer extends Component {
         }
         placeVote(vote)
         .then(resp =>{ 
-            console.log("HANDLE VOTE", resp)
             var filteredVotes = this.state.votes.filter(vote => vote.id !== resp.vote.id)
                 this.setState({ votes: [...filteredVotes, resp.vote]})
-        }, console.log("POST VOTE", this.state))
+        })
+    }
+
+    addVote = (votes) => {
+        this.props.addVote(votes);
     }
 
     render() {
         let loggedIn = !!this.props.currentUser.id
-        console.log("GAME CONTAINER RENDER", loggedIn)
+        console.log("GAME CONTAINER RENDER", this.props)
         if (this.state.games === null || this.state.teams === null) {
             return null
         }
@@ -68,4 +78,12 @@ class GameContainer extends Component {
     }
 }
 
-export default GameContainer;
+const mapStateToProps = state => ({
+    ...state
+})
+
+const mapDispatchToProps = dispatch => ({
+    addVote: (votes) => dispatch(addVote(votes))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameContainer);

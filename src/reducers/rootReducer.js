@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import simpleReducer from './simpleReducer';
+import authReducer from './authReducer';
+import voteReducer from './voteReducer';
 
 export default combineReducers({
-    simpleReducer
+    authReducer,
+    voteReducer
 })
