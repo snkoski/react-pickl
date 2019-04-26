@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Navbar from './components/Nav/Navbar';
 import GameContainer from './containers/GameContainer';
 import Login from './components/Auth/Login';
+import Register from './components/Register/Register';
 import { userFetchData, removeUser } from './actions/user';
 import { fetchVotes } from './actions/vote';
 
@@ -34,6 +35,7 @@ class App extends Component {
                         } */}
                     <Switch>
                         <Route path='/login' render={(routeProps) => (<Login {...routeProps} onLogin={this.handleLogin} />)} />
+                        <Route path='/register' render={(routeProps) => (<Register {...routeProps} />)} />
                         <Route path='/' render={(routeProps) => (<GameContainer {...routeProps} currentUser={this.props.user} />)} />
                     </Switch>
                 </div>

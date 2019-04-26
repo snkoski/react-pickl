@@ -20,6 +20,7 @@ class Navbar extends Component {
             <div className={classes.nav}>
                 <h1 className={classes.logo}>Pickl</h1>
                 <h1><Link to='/login'>Login</Link></h1>
+                <h1><Link to='/register'>Register</Link></h1>
                 <h1 onClick={this.handleLogout}>Logout</h1>
             </div>
             )

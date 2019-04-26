@@ -12,7 +12,9 @@ export const register = newUser => {
         password: newUser.password
     })
     .then(resp => {
-        console.log(resp)
+        localStorage.setItem('token', resp.data.token)
+        return resp.data
+        console.log("REGISTER", resp)
     })
 }
 

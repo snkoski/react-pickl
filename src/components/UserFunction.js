@@ -1,21 +1,5 @@
 import axios from 'axios';
 
-export const placeVote = (newVote) => {
-    return axios
-    .post('http://localhost:5000/api/votes', {
-        user_id: newVote.user_id,
-        game_id: newVote.game_id,
-        team_id: newVote.team_id
-    }, {
-        headers: {'Authorizatin': 'Bearer ' + localStorage.getItem('token')}
-    })
-    .then(resp => {
-        return resp.data
-    })
-    .catch(err => {
-        console.log(err)
-    })
-}
 
 // export const getTeams = () => {
 //     return axios
