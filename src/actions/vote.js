@@ -1,6 +1,6 @@
-import { FETCH_VOTES_START, FETCH_VOTES_SUCCESS, FETCH_VOTES_FAILURE, REMOVE_VOTES, PLACE_VOTE } from './types';
+import { FETCH_VOTES_START, FETCH_VOTES_SUCCESS, FETCH_VOTES_FAILURE, REMOVE_VOTES, NEW_VOTE, EDIT_VOTE } from './types';
 import axios from 'axios';
-
+ 
 const atoO = (array) => array.reduce((obj, item) => {
     obj[item.id] = item
     return obj
@@ -44,9 +44,30 @@ export const removeVotes = () => {
     }
 }
 
-// export const placeVote = (vote) => {
-//     return {
-//         type: PLACE_VOTE,
+export const newVote = (vote) => {
+    return {
+        type: NEW_VOTE,
+        payload: vote
+    }
+}
 
-//     }
-// }
+export const editVote = (vote) => {
+    return {
+        type: EDIT_VOTE,
+        payload: vote
+    }
+}
+
+export const postVote = (vote) => {
+    return(dispatch) => {
+
+        axios.post('http://localhost:5000/api/votes', {
+            user_id: vote.user,
+            game_id: vote.game,
+            team_id: vote.team
+        }, {
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+        })
+        .then(resp => dispatch(fetchVotes(vote.user)))
+    }
+}

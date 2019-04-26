@@ -1,4 +1,4 @@
-import { FETCH_VOTES_START, FETCH_VOTES_SUCCESS, FETCH_VOTES_FAILURE, REMOVE_VOTES } from '../actions/types';
+import { FETCH_VOTES_START, FETCH_VOTES_SUCCESS, FETCH_VOTES_FAILURE, REMOVE_VOTES, NEW_VOTE } from '../actions/types';
 
 export function votes(state = { loading: false, data: false }, action) {
     const { type, payload } = action
@@ -11,6 +11,9 @@ export function votes(state = { loading: false, data: false }, action) {
             return { ...state, loading: false, data: 'Error: could not load votes' }
         case REMOVE_VOTES:
             return { ...state, loading: false, data: false };
+        case NEW_VOTE:
+        console.log("IN NEW VOTE", state)
+            return { ...state, loading: false, data: payload };
         default:
             return state;
     }

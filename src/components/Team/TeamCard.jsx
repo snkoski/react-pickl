@@ -11,7 +11,7 @@ const TeamCard = props => {
         <p className={classes.City}>{props.team.city}</p>
         <p className={classes.Name}>{props.team.name}</p>
         <img src={props.team.logo} alt="Team Logo"/>
-        <VoteButton  teamID={props.team.id} gameID={props.gameID} handleVote={props.handleVote} />
+        <VoteButton  teamID={props.team.id} gameID={props.gameID}/>
     </div>
 )};
 

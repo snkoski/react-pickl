@@ -29,9 +29,9 @@ class App extends Component {
             <div className="App">
                 <Navbar onLogout={this.handleLogout} onLogin={this.handleLogin} />
                 <div>
-                    {
+                    {/* {
                             JSON.stringify(this.props)
-                        }
+                        } */}
                     <Switch>
                         <Route path='/login' render={(routeProps) => (<Login {...routeProps} onLogin={this.handleLogin} />)} />
                         <Route path='/' render={(routeProps) => (<GameContainer {...routeProps} currentUser={this.props.user} />)} />
