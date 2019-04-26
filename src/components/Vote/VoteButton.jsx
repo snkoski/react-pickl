@@ -26,17 +26,22 @@ setVote = (votes) => {
 }
 
   render() {
-    console.log("VOT BUTTON PROPS", this.props.voteReducer.vote)
-    const loggedIn = !!this.props.authReducer.user.id
+    const { user, votes } = this.props
+    const loggedIn = !!user.id
+    const voteYes = loggedIn && !!votes.data.filter(vote => vote.team === this.props.teamID)[0]
+    const style = !loggedIn ? classes.ButtonDisabled : voteYes ? classes.ButtonEnabledYes : classes.ButtonEnabledNo
     return( 
-    <button className={loggedIn ? classes.ButtonEnabled : classes.ButtonDisabled} onClick={() => this.handleVotez([this.props.gameID, this.props.teamID])}>Vote</button>
+    <button className={style} onClick={() => this.handleVotez([this.props.gameID, this.props.teamID])}>Vote</button>
     )
   }
 }
 
-const mapStateToProps = state => ({
-    ...state
-})
+const mapStateToProps = state => {
+  return {
+    votes: state.votes,
+    user: state.user
+  }
+}
 
 const mapDispatchToProps = dispatch => ({
   setVote: (votes) => dispatch(setVote(votes))

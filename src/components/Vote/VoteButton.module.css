@@ -2,6 +2,12 @@
     pointer-events: none
 }
 
-.ButtonEnabled {
-    pointer-events: all
+.ButtonEnabledNo {
+    pointer-events: all;
+    background-color: red;
+}
+
+.ButtonEnabledYes {
+    pointer-events: all;
+    background-color: green;
 }

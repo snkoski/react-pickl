@@ -17,16 +17,16 @@ export const placeVote = (newVote) => {
     })
 }
 
-export const getTeams = () => {
-    return axios
-    .get('teams')
-    .then(resp => {
-        return resp.data.team
-    })
-    .catch(err => {
-        console.log(err)
-    })
-}
+// export const getTeams = () => {
+//     return axios
+//     .get('teams')
+//     .then(resp => {
+//         return resp.data.team
+//     })
+//     .catch(err => {
+//         console.log(err)
+//     })
+// }
 
 export const getTodaysGames = () => {
     return axios

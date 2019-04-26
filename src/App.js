@@ -5,74 +5,26 @@ import { connect } from 'react-redux';
 import Navbar from './components/Nav/Navbar';
 import GameContainer from './containers/GameContainer';
 import Login from './components/Auth/Login';
-import Home from './containers/Home'
-import Axios from 'axios';
+import { userFetchData, removeUser } from './actions/user';
+import { fetchVotes } from './actions/vote';
 
-import { addUserAction, removeUserAction } from './actions/userActions';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            auth: {
-                currentUser: {}
-            }
-        }
-    }
 
     componentDidMount() {
         const token = localStorage.getItem('token')
         if (token) {
-            Axios.get('http://localhost:5000/api/reauth', {
-                headers: { 'Authorization': 'Bearer ' + token }
-            })
-                .then(resp => {
-                    this.setState({
-                        auth: {
-                            currentUser: resp.data.user
-                        }
-                    })
-                })
-                .then(() => {
-                    this.addUserAction(this.state.auth.currentUser)
-                })
-                
+            this.props.userFetchData(token)
         }
     }
 
-    handleLogout = () => {
-        this.setState({
-            auth: {
-                currentUser: {}
-            }
-        }, () => {
-            localStorage.clear()
-            this.removeUserAction()
-        })
-
+    componentDidUpdate(prevProps) {
+        if (this.props.user.id !== prevProps.user.id) {
+            this.props.fetchVotes(this.props.user.id)
+        }
     }
-
-    handleLogin = (user) => {
-        this.setState({
-            auth: {
-                currentUser: user
-            }
-        })
-    }
-
-    addUserAction = (user) => {
-        this.props.addUserAction(user);
-    }
-
-    removeUserAction = () => {
-        this.props.removeUserAction();
-    }
-
-
 
     render() {
-        const props = this.state.auth
         return (
             <div className="App">
                 <Navbar onLogout={this.handleLogout} onLogin={this.handleLogin} />
@@ -82,7 +34,7 @@ class App extends Component {
                         }
                     <Switch>
                         <Route path='/login' render={(routeProps) => (<Login {...routeProps} onLogin={this.handleLogin} />)} />
-                        <Route path='/' render={(routeProps) => (<GameContainer {...routeProps} {...props} />)} />
+                        <Route path='/' render={(routeProps) => (<GameContainer {...routeProps} currentUser={this.props.user} />)} />
                     </Switch>
                 </div>
             </div>
@@ -90,13 +42,11 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    ...state
-})
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+        votes: state.votes
+    }
+}
 
-const mapDispatchToProps = dispatch => ({
-    addUserAction: (user) => dispatch(addUserAction(user)),
-    removeUserAction: () => dispatch(removeUserAction())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, { userFetchData, fetchVotes })(App)

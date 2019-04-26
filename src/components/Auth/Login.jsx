@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { login } from './AuthFunctions';
 import { connect } from 'react-redux';
+import { userFetchData, removeUser } from '../../actions/user';
+import { fetchVotes } from '../../actions/vote';
 
 import { userActions, addUserAction } from '../../actions/userActions';
 
@@ -25,12 +27,14 @@ class Login extends Component {
             password: this.state.password
         }
 
-        login(user).then(res => {
-            console.log("IN LOGIN RENDER", res)
+        login(user).then(resp => {
+            console.log("IN LOGIN RENDER", resp)
 
-            if(!res.error) {
-                this.props.onLogin(res.user)
-                this.addUserAction(res.user)
+            if(!resp.error) {
+                // this.props.onLogin(res.user)
+                // this.addUserAction(res.user)
+                this.props.userFetchData(resp.token)
+                this.props.fetchVotes(resp.user.id)
                 this.props.history.push('/')
             }
         })
@@ -74,12 +78,15 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    ...state
-})
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+        votes: state.votes
+    }
+}
 
-const mapDispatchToProps = dispatch => ({
-    addUserAction: (user) => dispatch(addUserAction(user))
-})
+// const mapDispatchToProps = dispatch => ({
+//     addUserAction: (user) => dispatch(addUserAction(user))
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, { userFetchData, fetchVotes })(Login);
