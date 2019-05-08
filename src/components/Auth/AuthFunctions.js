@@ -14,7 +14,6 @@ export const register = newUser => {
     .then(resp => {
         localStorage.setItem('token', resp.data.token)
         return resp.data
-        console.log("REGISTER", resp)
     })
 }
 
@@ -25,7 +24,6 @@ export const login = user => {
         password: user.password
     })
     .then(resp => {
-        console.log(resp)
         localStorage.setItem('token', resp.data.token)
         return resp.data
     })

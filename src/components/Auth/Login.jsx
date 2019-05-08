@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import { userFetchData, removeUser } from '../../actions/user';
 import { fetchVotes } from '../../actions/vote';
 
-import { userActions, addUserAction } from '../../actions/userActions';
-
-
 class Login extends Component {
     constructor(){
         super()
@@ -28,11 +25,8 @@ class Login extends Component {
         }
 
         login(user).then(resp => {
-            console.log("IN LOGIN RENDER", resp)
 
             if(!resp.error) {
-                // this.props.onLogin(res.user)
-                // this.addUserAction(res.user)
                 this.props.userFetchData(resp.token)
                 this.props.fetchVotes(resp.user.id)
                 this.props.history.push('/')
@@ -45,7 +39,6 @@ class Login extends Component {
     }
 
     render() {
-        console.log("APP", this.props)
 
         return (
             <div>
@@ -84,9 +77,5 @@ const mapStateToProps = state => {
         votes: state.votes
     }
 }
-
-// const mapDispatchToProps = dispatch => ({
-//     addUserAction: (user) => dispatch(addUserAction(user))
-// })
 
 export default connect(mapStateToProps, { userFetchData, fetchVotes })(Login);

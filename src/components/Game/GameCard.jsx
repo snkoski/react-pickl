@@ -7,7 +7,7 @@ import classes from './GameCard.module.css';
 const GameCard = props => {
     return (
     <div className={classes.GameCard}>
-        <TeamContainer homeTeam={props.homeTeam} awayTeam={props.awayTeam} gameID={props.game.id} handleVote={props.handleVote} />
+        <TeamContainer homeTeam={props.homeTeam} awayTeam={props.awayTeam} gameID={props.game.id} gameVote={props.gameVote} handleVote={props.handleVote} />
         <p>{props.game.location}</p>
         <p>{props.game.time}</p>
     </div>)

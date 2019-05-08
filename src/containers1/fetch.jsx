@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-
 class Fetch extends Component {
   constructor(props) {
     super(props);
@@ -18,12 +17,9 @@ class Fetch extends Component {
     fetch('http://localhost:5000/api/teams')
       .then(response => response.json())
       .then(teams => this.setState({ teams }))
-    console.log(this.state);
   }
 
-
   render() {
-    console.log("IN RENDER", this.state)
 
     return (
       <h1>hello</h1>

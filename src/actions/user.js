@@ -9,7 +9,6 @@ export const userFetchReauthSuccess = (user) => {
 }
 
 export const userFetchData = (token) => {
-    console.log("IN FETCH ACTION")
     return(dispatch) => {
         axios.get('http://localhost:5000/api/reauth', {
                 headers: { 'Authorization': 'Bearer ' + token }

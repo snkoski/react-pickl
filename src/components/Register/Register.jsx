@@ -4,13 +4,16 @@ import { register } from '../Auth/AuthFunctions';
 import { userFetchData, removeUser } from '../../actions/user';
 import { fetchVotes } from '../../actions/vote';
 
+import classes from './Register.module.css';
+
 class Register extends Component {
     constructor(){
         super()
         this.state = {
             username: '',
             email: '',
-            password: ''
+            password: '',
+            confirmPassword: ''
         }
     }
     onChange = e => {
@@ -35,40 +38,51 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
-                <form noValidate onSubmit={this.onSubmit}>
-                    <h1>
-                        Register
-                    </h1>
-                    <div>
-                        <label htmlFor='username'>Username</label>
-                        <input type='text' 
-                            name='username'
-                            placeholder='Enter username'
-                            value={this.state.username}
-                            onChange={this.onChange}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor='email'>Email</label>
-                        <input type='email' 
-                            name='email'
-                            placeholder='Enter email'
-                            value={this.state.email}
-                            onChange={this.onChange}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor='password'>Password</label>
-                        <input type='password' 
-                            name='password'
-                            placeholder='Enter password'
-                            value={this.state.password}
-                            onChange={this.onChange}
-                        />
-                    </div>
-                    <button type='submit'>Submit</button>
-                </form>
+            <div className={classes.RegisterContainer}>
+                <div className={classes.RegisterForm}>
+                    <form noValidate onSubmit={this.onSubmit}>
+                        <h1 className={classes.Header}>
+                            Create Your Pickl Account
+                        </h1>
+                        <div>
+                            <input type='text' 
+                                name='username'
+                                placeholder='Username'
+                                value={this.state.username}
+                                onChange={this.onChange}
+                            />
+                            <label htmlFor='username'>Username</label>
+                        </div>
+                        <div>
+                            <input type='email' 
+                                name='email'
+                                placeholder='Email'
+                                value={this.state.email}
+                                onChange={this.onChange}
+                            />
+                            <label htmlFor='email'>Email</label>
+                        </div>
+                        <div>
+                            <input type='password' 
+                                name='password'
+                                placeholder='Password'
+                                value={this.state.password}
+                                onChange={this.onChange}
+                            />
+                            <label htmlFor='password'>Password</label>
+                        </div>
+                        <div>
+                            <input type='password' 
+                                name='confirmPassword'
+                                placeholder='Confirm'
+                                value={this.state.confirmPassword}
+                                onChange={this.onChange}
+                            />
+                            <label htmlFor='password'>Password</label>
+                        </div>
+                        <button type='submit'>Submit</button>
+                    </form>
+                </div>
             </div>
         )
     }

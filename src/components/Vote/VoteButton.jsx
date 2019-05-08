@@ -1,44 +1,52 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { placeVote } from '../../components/UserFunction';
-import { setVote } from '../../actions/voteActions';
 import { postVote } from '../../actions/vote';
 
 import classes from './VoteButton.module.css';
 
 class VoteButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      buttonColor: true
+    };
+  }
 
-  // componentDidUpdate(prevProps) {
-  //   // Typical usage (don't forget to compare props):
-  //   let currentVote = this.props.votes.data.filter(vote => vote.team === this.props.tamID)
-  //   let prevVote = prevProps.votes.data.filter(vote => vote.team === this.props.tamID)
-  //   if (currentVote !== prevVote) {
-  //     this.fetchData(this.props.userID);
-  //   }
+  componentDidMount() {
+    this.setState({
+      buttonColor: this.props.gameColor
+    })
+  }
+
+  // colorToggle = () => {
+  //   this.
   // }
 
-  // shouldComponentUpdate(nextProps) {
-  //   let currentVote = this.props.votes.data.filter(vote => vote.team === this.props.tamID)
-  //   let nextVote = nextProps.votes.data.filter(vote => vote.team === this.props.tamID)
-  //   return currentVote !== nextVote
-  // }
+
+  handleClick = (user, game, team) => {
+    this.props.postVote({user:user, game:game, team:team})
+    this.props.buttonToggle()
+    console.log("HANDLE CLICK", this.props)
+  }
 
   render() {
-    console.log("VOTE BUTTON PROPS", this.props, "STATE", this.state)
+    console.log("HANDLE CLICK", this.props)
+
     const { user, votes, gameID, teamID, postVote } = this.props
     const loggedIn = !!user.id
-    const voteYes = loggedIn && votes.data && !!votes.data.filter(vote => vote.team === this.props.teamID)[0]
+    // const voteYes = loggedIn && votes.data && !!votes.data.filter(vote => vote.team === this.props.teamID)[0]
+    const voteYes = this.props.gameColor
     const style = !loggedIn ? classes.ButtonDisabled : voteYes ? classes.ButtonEnabledYes : classes.ButtonEnabledNo
     
     return( 
-    <button className={style} onClick={() => postVote({user:user.id, game:gameID, team:teamID})}>Vote</button>
+    <button className={style} onClick={() => this.handleClick(user.id, gameID, teamID)}>Vote</button>
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    votes: state.votes,
+    // votes: state.votes,
     user: state.user
   }
 }

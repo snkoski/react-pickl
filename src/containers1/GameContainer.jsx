@@ -18,7 +18,6 @@ class GameContainer extends Component {
     fetch('http://localhost:5000/api/teams')
       .then(response => response.json())
       .then(teams => this.setState({ teams }))
-    console.log(this.state);
   }
 
   render() {

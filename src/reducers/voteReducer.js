@@ -12,7 +12,6 @@ export function votes(state = { loading: false, data: false }, action) {
         case REMOVE_VOTES:
             return { ...state, loading: false, data: false };
         case NEW_VOTE:
-        console.log("IN NEW VOTE", state)
             return { ...state, loading: false, data: payload };
         default:
             return state;

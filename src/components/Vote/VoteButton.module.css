@@ -11,3 +11,8 @@
     pointer-events: none;
     background-color: green;
 }
+
+.ButtonEnabledUndecided {
+    pointer-events: all;
+    background-color: white;
+}
