@@ -53,6 +53,7 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     font-size: .8em;
+    float: right;
 }
 
 .RegisterForm input:focus + label {
@@ -65,7 +66,6 @@
     font-weight: 700;
     background-color: white;
     padding: .1em .3em;
-    
 }
 
 .RegisterForm input::placeholder {

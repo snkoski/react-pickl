@@ -78,7 +78,7 @@ class Register extends Component {
                                 value={this.state.confirmPassword}
                                 onChange={this.onChange}
                             />
-                            <label htmlFor='password'>Password</label>
+                            <label htmlFor='confirmPassword'>Confirm</label>
                         </div>
                         <button type='submit'>Submit</button>
                     </form>

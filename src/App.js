@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import Navbar from './components/Nav/Navbar';
 import GameContainer from './containers/GameContainer';
-import Login from './components/Auth/Login';
-import Register from './components/Register/Register';
+import Login from './components/forms/Login';
+import Register from './components/forms/Register';
 import { userFetchData, removeUser } from './actions/user';
 import { fetchVotes } from './actions/vote';
 
