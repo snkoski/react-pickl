@@ -20,7 +20,6 @@ class DoubleVote extends Component {
       render () {
         return(
             <div>
-                {/* <button className={style} onClick={() => this.handleClick(user.id, gameID, teamID)}>Vote</button> */}
                 <button onClick={()=>this.handleClick(this.props.user.id, this.props.game, this.props.home.id)}>Vote</button>
                 <button onClick={()=>this.handleClick(this.props.user.id, this.props.game, this.props.away.id)}>Vote</button>
             </div>

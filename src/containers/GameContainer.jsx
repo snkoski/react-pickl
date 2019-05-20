@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import GameCard from '../components/Game/GameCard';
-import classes from './GameContainer.module.css';
 import { fetchTeams } from '../actions/teams';
 import { fetchGames } from '../actions/games';
+
+import classes from './GameContainer.module.css';
 
 
 class GameContainer extends Component {

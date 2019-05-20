@@ -68,6 +68,5 @@ export const postVote = (vote) => {
         }, {
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         })
-        // .then(resp => dispatch(fetchVotes(vote.user)))
     }
 }
