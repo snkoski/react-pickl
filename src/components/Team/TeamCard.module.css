@@ -12,6 +12,11 @@
     width: 100%;
 }    
 
+.BlackAndWhite {
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
 .City {
     color: red;
 }

@@ -8,15 +8,15 @@ class VoteButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      buttonColor: true
+      // buttonColor: true
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      buttonColor: this.props.gameColor
-    })
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     buttonColor: this.props.gameColor
+  //   })
+  // }
 
   // colorToggle = () => {
   //   this.
@@ -30,14 +30,14 @@ class VoteButton extends Component {
   }
 
   render() {
-    console.log("HANDLE CLICK", this.props)
+    console.log("Vote Button", this.props)
 
     const { user, votes, gameID, teamID, postVote } = this.props
     const loggedIn = !!user.id
     // const voteYes = loggedIn && votes.data && !!votes.data.filter(vote => vote.team === this.props.teamID)[0]
-    const voteYes = this.props.gameColor
-    const style = !loggedIn ? classes.ButtonDisabled : voteYes ? classes.ButtonEnabledYes : classes.ButtonEnabledNo
-    
+    // const voteYes = this.props.gameColor
+    // const style = !loggedIn ? classes.ButtonDisabled : voteYes ? classes.ButtonEnabledYes : classes.ButtonEnabledNo
+    const style = ''
     return( 
     <button className={style} onClick={() => this.handleClick(user.id, gameID, teamID)}>Vote</button>
     )
