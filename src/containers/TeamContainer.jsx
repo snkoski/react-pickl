@@ -30,9 +30,9 @@ class TeamContainer extends React.Component {
         console.log("TEAM CONTAINER", this.props)
         return (
             <div className={classes.TeamContainer}>
+                <TeamCard team={this.props.awayTeam} gameID={this.props.gameID} handleVote={this.props.handleVote} gameColor={this.state.gameColor} buttonToggle={this.toggleButtonColor} votedTeam={this.state.votedTeam} teamContainerVote={this.state.teamContainerVote} voteButtonTeam={this.voteButtonTeam}/>
                 <TeamCard team={this.props.homeTeam} gameID={this.props.gameID} handleVote={this.props.handleVote} gameColor={this.state.gameColor} buttonToggle={this.toggleButtonColor} votedTeam={this.state.votedTeam} teamContainerVote={this.state.teamContainerVote}
                 voteButtonTeam={this.voteButtonTeam}/>
-                <TeamCard team={this.props.awayTeam} gameID={this.props.gameID} handleVote={this.props.handleVote} gameColor={this.state.gameColor} buttonToggle={this.toggleButtonColor} votedTeam={this.state.votedTeam} teamContainerVote={this.state.teamContainerVote} voteButtonTeam={this.voteButtonTeam}/>
             </div>
         )
     }}

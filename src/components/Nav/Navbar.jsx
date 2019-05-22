@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { removeUser } from '../../actions/user';
 import { removeVotes } from '../../actions/vote';
 
-
 import classes from './Nav.module.css';
 
 class Navbar extends Component {
@@ -34,12 +33,4 @@ const mapStateToProps = state => {
     }
 }
 
-// const mapDispatchToProps = dispatch => ({
-//     addUserAction: (user) => dispatch(addUserAction(user)),
-//     removeUserAction: () => dispatch(removeUserAction())
-// })
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
-
 export default connect(mapStateToProps, { removeUser, removeVotes })(Navbar)
-// export default Navbar;

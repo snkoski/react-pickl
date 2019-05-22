@@ -30,7 +30,7 @@ export const fetchVotes = (id) => {
     return(dispatch) => {
         dispatch(fetchVotesStart())
 
-        axios.get(`http://localhost:5000/api/votes/${id}/today`, {
+        axios.get(`http://54.225.49.92/votes/${id}/today`, {
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         })
         .then(resp => dispatch(fetchVotesSuccess(resp.data.votes)))
@@ -61,7 +61,7 @@ export const editVote = (vote) => {
 export const postVote = (vote) => {
     return(dispatch) => {
 
-        axios.post('http://localhost:5000/api/votes', {
+        axios.post('http://54.225.49.92/votes', {
             user_id: vote.user,
             game_id: vote.game,
             team_id: vote.team

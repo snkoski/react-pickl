@@ -10,7 +10,7 @@ export const userFetchReauthSuccess = (user) => {
 
 export const userFetchData = (token) => {
     return(dispatch) => {
-        axios.get('http://localhost:5000/api/reauth', {
+        axios.get('http://54.225.49.92/reauth', {
                 headers: { 'Authorization': 'Bearer ' + token }
             })
             .then(resp => dispatch(userFetchReauthSuccess(resp.data.user)))

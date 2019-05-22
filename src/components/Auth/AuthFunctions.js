@@ -6,7 +6,7 @@ let config = {
 
 export const register = newUser => {
     return axios
-    .post('http://localhost:5000/api/users', {
+    .post('http://54.225.49.92/users', {
         username: newUser.username,
         email: newUser.email,
         password: newUser.password
@@ -19,7 +19,7 @@ export const register = newUser => {
 
 export const login = user => {
     return axios
-    .post('http://localhost:5000/api/login', {
+    .post('http://54.225.49.92/login', {
         username: user.username,
         password: user.password
     })

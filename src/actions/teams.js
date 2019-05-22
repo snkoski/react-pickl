@@ -24,7 +24,7 @@ export const fetchTeams = () => {
     return dispatch => {
         dispatch(fetchTeamsStart())
 
-        axios.get('http://localhost:5000/api/teams')
+        axios.get('http://54.225.49.92/teams')
         .then(resp => dispatch(fetchTeamsSuccess(resp.data.team)))
         .catch(e => dispatch(fetchTeamsFailure()))
     }
