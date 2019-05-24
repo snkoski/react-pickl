@@ -8,6 +8,7 @@ import Login from './components/forms/Login';
 import Register from './components/forms/Register';
 import { userFetchData, removeUser } from './actions/user';
 import { fetchVotes } from './actions/vote';
+import GamePage from './components/Game/GamePage';
 
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
     }
 
     render() {
+        console.log("APP", this.props)
         return (
             <div className="App">
                 <Navbar onLogout={this.handleLogout} onLogin={this.handleLogin} />
@@ -36,6 +38,7 @@ class App extends Component {
                     <Switch>
                         <Route path='/login' render={(routeProps) => (<Login {...routeProps} onLogin={this.handleLogin} />)} />
                         <Route path='/register' render={(routeProps) => (<Register {...routeProps} />)} />
+                        <Route path='/games/:id' render={(routeProps) => (<GamePage {...routeProps} />)} />
                         <Route path='/' render={(routeProps) => (<GameContainer {...routeProps} currentUser={this.props.user} />)} />
                     </Switch>
                 </div>

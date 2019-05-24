@@ -1,5 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import GamePage from '../../components/Game/GamePage';
+
+
 
 import TeamContainer from '../../containers/TeamContainer';
 
@@ -27,6 +32,15 @@ const GameCard = props => {
         <TeamContainer homeTeam={props.homeTeam} awayTeam={props.awayTeam} gameID={props.game.id} gameVote={props.gameVote} handleVote={props.handleVote} user={props.currentUser}/>
         <p>{props.game.location}</p>
         <p>{formatTime(props.game.time)}</p>
+        <Link to={{
+            pathname: `/games/${props.game.id}`,
+            state: {
+                homeTeam: props.homeTeam,
+                awayTeam: props.awayTeam
+            }
+            }}>
+                <button >Check out the matchup</button>
+            </Link>
     </div>)
 };
 

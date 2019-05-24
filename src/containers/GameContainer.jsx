@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import GameCard from '../components/Game/GameCard';
 import { fetchTeams } from '../actions/teams';
 import { fetchGames } from '../actions/games';
+import { fetchVotes } from '../actions/vote';
 
 import classes from './GameContainer.module.css';
 
@@ -17,6 +18,9 @@ class GameContainer extends Component {
     componentDidMount() {
         this.props.fetchTeams()
         this.props.fetchGames()
+        if (!!this.props.currentUser.id) {
+            this.props.fetchVotes(this.props.currentUser.id)
+        }
     }
 
     render() {
@@ -65,4 +69,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchTeams, fetchGames })(GameContainer);
+export default connect(mapStateToProps, { fetchTeams, fetchGames, fetchVotes })(GameContainer);

@@ -31,7 +31,7 @@ class Register extends Component {
 
         register(newUser).then(resp => {
                 this.props.userFetchData(resp.token)
-                this.props.fetchVotes(resp.user.id)
+                // this.props.fetchVotes(resp.user.id)
                 this.props.history.push('/')
         })
     }

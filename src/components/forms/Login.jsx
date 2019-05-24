@@ -31,7 +31,7 @@ class Login extends Component {
 
             if(!resp.error) {
                 this.props.userFetchData(resp.token)
-                this.props.fetchVotes(resp.user.id)
+                // this.props.fetchVotes(resp.user.id)
                 this.props.history.push('/')
             }
         })
