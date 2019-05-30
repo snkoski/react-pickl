@@ -24,7 +24,6 @@ export const fetchGames = () => {
     return dispatch => {
         dispatch(fetchGamesStart())
 
-        // axios.get('http://localhost:5000/api/games/today')
         axios.get('http://54.225.49.92/games/today')
         .then(resp => dispatch(fetchGamesSuccess(resp.data.game)))
         .catch(e => dispatch(fetchGamesFailure()))
