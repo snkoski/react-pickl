@@ -26,7 +26,7 @@ const GameCard = props => {
 
         return newTime
     }
-
+    console.log("GGGGGGGG", props)
     return (
     <div className={classes.GameCard}>
         <TeamContainer homeTeam={props.homeTeam} awayTeam={props.awayTeam} gameID={props.game.id} gameVote={props.gameVote} handleVote={props.handleVote} user={props.currentUser}/>
@@ -36,7 +36,8 @@ const GameCard = props => {
             pathname: `/games/${props.game.id}`,
             state: {
                 homeTeam: props.homeTeam,
-                awayTeam: props.awayTeam
+                awayTeam: props.awayTeam,
+                game_id: props.game.id
             }
             }}>
                 <button >Check out the matchup</button>
