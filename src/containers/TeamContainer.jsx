@@ -27,7 +27,7 @@ class TeamContainer extends React.Component {
     }
 
     render() {
-        console.log("TEAM CONTAINER", this.props)
+        // console.log("TEAM CONTAINER", this.props)
         return (
             <div className={classes.TeamContainer}>
                 <TeamCard team={this.props.awayTeam} gameID={this.props.gameID} handleVote={this.props.handleVote} gameColor={this.state.gameColor} buttonToggle={this.toggleButtonColor} votedTeam={this.state.votedTeam} teamContainerVote={this.state.teamContainerVote} voteButtonTeam={this.voteButtonTeam}/>

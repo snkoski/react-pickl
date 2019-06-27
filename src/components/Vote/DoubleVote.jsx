@@ -12,7 +12,7 @@ class DoubleVote extends Component {
       }
 
       handleClick = (user, game, team) => {
-        console.log("HANDLE CLICK", user, game, team)
+        // console.log("HANDLE CLICK", user, game, team)
         this.props.postVote({user:user, game:game, team:team})
         this.props.voteButtonTeam(team)        
       }

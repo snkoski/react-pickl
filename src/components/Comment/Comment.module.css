@@ -1,0 +1,25 @@
+.Comment {
+    display: grid;
+    padding: 5px;
+    font-size: 1rem;
+    grid-template-columns: minmax(75px, auto) 1fr;
+    grid-gap: 2px;
+    border-bottom: 2px solid #AAAAAA;
+}
+
+.Comment .commentor {
+    font-size: .75em;
+    justify-self: left;
+    text-decoration: underline;
+    text-decoration-color: #BBBBBB;}
+
+.Comment .content {
+    grid-column: 1/-1;
+    justify-self: left;
+}
+
+.Comment .timestamp {
+    font-size: .75em;
+    text-decoration: underline;
+    text-decoration-color: #BBBBBB;
+}

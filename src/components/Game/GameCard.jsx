@@ -26,7 +26,7 @@ const GameCard = props => {
 
         return newTime
     }
-    console.log("GGGGGGGG", props)
+    // console.log("GGGGGGGG", props)
     return (
     <div className={classes.GameCard}>
         <TeamContainer homeTeam={props.homeTeam} awayTeam={props.awayTeam} gameID={props.game.id} gameVote={props.gameVote} handleVote={props.handleVote} user={props.currentUser}/>

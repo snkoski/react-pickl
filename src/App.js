@@ -27,7 +27,7 @@ class App extends Component {
     }
 
     render() {
-        console.log("APP", this.props)
+        // console.log("APP", this.props)
         return (
             <div className="App">
                 <Navbar onLogout={this.handleLogout} onLogin={this.handleLogin} />

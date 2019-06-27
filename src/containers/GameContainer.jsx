@@ -7,7 +7,7 @@ import { fetchGames } from '../actions/games';
 import { fetchVotes } from '../actions/vote';
 
 import classes from './GameContainer.module.css';
-
+import { Button } from 'antd'
 
 class GameContainer extends Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class GameContainer extends Component {
 
     render() {
         const { teams, games, votes } = this.props
-        console.log("GAME CONT", votes)
+        // console.log("GAME CONT", votes)
         let loggedIn = !!this.props.currentUser.id
         if (games.data === false || teams.data === false) {
             return null
@@ -33,6 +33,7 @@ class GameContainer extends Component {
         if (loggedIn)
         {return (
             <div className={classes.GameContainer}>
+                <Button type="primary">Button</Button>
                 {games.data.map((game) => {
 
                     let awayTeam = teams.data.filter(team => team.id === game.away_team)

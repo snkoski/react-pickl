@@ -5,7 +5,6 @@ import VoteButton from '../Vote/VoteButton';
 import classes from './TeamCard.module.css';
 
 const TeamCard = props => {
-    console.log("TEAM CARD", props)
     return(
     <div className={classes.TeamCard}>
         <p className={classes.City}>{props.team.city}</p>
