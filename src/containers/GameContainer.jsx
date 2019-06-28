@@ -33,7 +33,6 @@ class GameContainer extends Component {
         if (loggedIn)
         {return (
             <div className={classes.GameContainer}>
-                <Button type="primary">Button</Button>
                 {games.data.map((game) => {
 
                     let awayTeam = teams.data.filter(team => team.id === game.away_team)
@@ -44,6 +43,7 @@ class GameContainer extends Component {
 
                     return <GameCard key={`game-${game.id}`} game={game} currentUser={this.props.currentUser} awayTeam={awayTeam[0]} homeTeam={homeTeam[0]} gameVote={gameVote[0]} handleVote={this.handleVote} />
                 })}
+                <Button type="primary">Button</Button>
             </div>
         )}
         return (

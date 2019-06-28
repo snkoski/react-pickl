@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import CommentContainer from '../../containers/CommentContainer';
 // import { fetchGameComments } from '../../actions/comments';
-
+import classes from './GamePage.module.css';
 
 class GamePage extends Component {
     constructor(props) {
@@ -41,7 +41,7 @@ class GamePage extends Component {
         // console.log("GAME PAGE", this.props)
         const { homeTeam, awayTeam } = this.props.location.state
         return (
-            <div>
+            <div className={classes.GamePage}>
                 <h1><Link to='/'>Back to games</Link></h1>
                 <button onClick={this.backButton}>backButton</button>
                 <h2>{homeTeam.name} VS {awayTeam.name}</h2>

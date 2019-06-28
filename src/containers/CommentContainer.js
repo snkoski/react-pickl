@@ -17,11 +17,15 @@ class CommentContainer extends Component {
         this.props.patchDeleteComment(id)
     }
 
+    renderCommentInput = () => {
+        return (this.props.user.id) ? <CommentInput game_id={this.props.game_id}/> : null;
+    }
+
     render() {
         console.log("COMMENT CONTAINER", this.props)
         return (
             <div>
-                <CommentInput game_id={this.props.game_id}/>
+                {this.renderCommentInput()}
                 <CommentHolder comments={this.props.comments.data} username={this.props.user.username} handleDeleteComment={this.handleDeleteComment}/>
             </div>
         )
