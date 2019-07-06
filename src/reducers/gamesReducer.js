@@ -1,15 +1,40 @@
-import { FETCH_GAMES_START, FETCH_GAMES_SUCCESS, FETCH_GAMES_FAILURE } from "../actions/types";
+import { FETCH_GAMES_START, FETCH_GAMES_SUCCESS, FETCH_GAMES_FAILURE, SELECT_GAME } from "../actions/types";
 
-export function games(state = { loading: false, data: false }, action) {
-    const { type, payload } = action
-    switch (type) {
-        case FETCH_GAMES_START:
-            return { ...state, loading: true, data: false };
-        case FETCH_GAMES_SUCCESS:
-            return { ...state, loading: false, data: payload };
-        case FETCH_GAMES_FAILURE:
-            return { ...state, loading: false, data: 'Error: could not fetch games' }
+const initialState = {
+    allGames: null,
+    selectedGame: null,
+    error: null,
+    loading: false
+};
+
+const gamesFetchStart = (state, action) => {
+    return { ...state, error: null, loading: true };
+};
+
+const gamesFetchSuccess = (state, action) => {
+    return { ...state, allGames: action.allGames, error: null, loading: false };
+};
+
+const gamesFetchFail = (state, action) => {
+    return { ...state, error: action.error, loading: false };
+};
+
+const selectGame = (state, action) => {
+    const foundGame = state.allGames.filter(game => {
+        return game.id === action.id;
+    })
+    return { ...state, selectedGame: foundGame };
+};
+
+const gamesReducer =(state = initialState, action) => {
+    switch (action.type) {
+        case FETCH_GAMES_START: return gamesFetchStart(state, action);
+        case FETCH_GAMES_SUCCESS: return gamesFetchSuccess(state, action);
+        case FETCH_GAMES_FAILURE: return gamesFetchFail(state, action);
+        case SELECT_GAME: return selectGame(state, action);
         default:
             return state;
-    }
-} 
+    };
+};
+
+export default gamesReducer;

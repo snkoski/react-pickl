@@ -1,15 +1,31 @@
 import { FETCH_TEAMS_START, FETCH_TEAMS_SUCCESS, FETCH_TEAMS_FAILURE } from "../actions/types";
 
-export function teams(state = { loading: false, data: false }, action) {
-    const { type, payload } = action
-    switch (type) {
-        case FETCH_TEAMS_START:
-            return { ...state, loading: true, data: false };
-        case FETCH_TEAMS_SUCCESS:
-            return { ...state, loading: false, data: payload };
-        case FETCH_TEAMS_FAILURE:
-            return { ...state, loading: false, data: 'Error: could not fetch teams' }
+const initialState = {
+    teams: null,
+    error: null,
+    loading: false
+}
+
+const fetchTeamsStart = (state, action) => {
+    return { ...state, error: null, loading: true };
+};
+
+const fetchTeamsSuccess = (state, action) => {
+    return { ...state, teams: action.teams, error: null, loading: false };
+};
+
+const fetchTeamsFail = (state, action) => {
+    return { ...state, error: action.error, loading: false };
+};
+
+const teamsReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case FETCH_TEAMS_START: return fetchTeamsStart(state, action);
+        case FETCH_TEAMS_SUCCESS: return fetchTeamsSuccess(state, action);
+        case FETCH_TEAMS_FAILURE: return fetchTeamsFail(state, action);
         default:
             return state;
     }
 } 
+
+export default teamsReducer;

@@ -20,32 +20,24 @@ const formatTimestamp = timestamp => {
 
 const Comment = props => {
     
-    console.log("COMMENT", props)
-
+    let deleteButton = null;
     if (props.username === props.comment.commentor.username) {
-        return (
-            <div className={classes.Comment}>
-                <span className={classes.commentor}>{props.comment.commentor.username}</span>
-                <span className={classes.timestamp}>{formatTimestamp(props.comment.timestamp)}</span>
-                <span className={classes.content}>{props.comment.content}</span>
-                {/* <button>Edit</button> */}
-                <button type='button' onClick={() => props.handleDeleteComment(props.comment.id)}>Delete</button>
-            </div>
-        )
-    } else {
-        return (
-            <div className={classes.Comment}>
-                <span className={classes.commentor}>{props.comment.commentor.username}</span>
-                <span className={classes.timestamp}>{formatTimestamp(props.comment.timestamp)}</span>
-                <span className={classes.content}>{props.comment.content}</span>
-            </div>
-        )
+        deleteButton = <button type='button' onClick={() => props.handleDeleteComment(props.comment.id)}>Delete</button>
     }
+
+    return (
+        <div className={classes.Comment}>
+            <span className={classes.commentor}>{props.comment.commentor.username}</span>
+            <span className={classes.timestamp}>{formatTimestamp(props.comment.timestamp)}</span>
+            <span className={classes.content}>{props.comment.content}</span>
+            {deleteButton}
+        </div>
+    )
 }
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        username: state.auth.username
     }
 }
 

@@ -1,44 +1,44 @@
 
- import { FETCH_GAME_COMMENTS_START, FETCH_GAME_COMMENTS_SUCCESS, FETCH_GAME_COMMENTS_FAILURE, ADD_COMMENT, DELETE_COMMENT } from './types';
+ import { FETCH_GAME_COMMENTS_START, FETCH_GAME_COMMENTS_SUCCESS, FETCH_GAME_COMMENTS_FAILURE, ADD_COMMENT, DELETE_GAME_COMMENT, EDIT_GAME_COMMENT } from './types';
  import axios from 'axios';
 
  export const fetchGameCommentsStart = () => {
      return {
          type: FETCH_GAME_COMMENTS_START
-     }
- }
+     };
+ };
 
- export const fetchGameCommentsSuccess = (data) => {
+ export const fetchGameCommentsSuccess = (comments) => {
     return {
         type: FETCH_GAME_COMMENTS_SUCCESS,
-        payload: data
-    }
-}
+        comments: comments
+    };
+};
 
- export const fetchGameCommentsFailure = () => {
+ export const fetchGameCommentsFailure = (error) => {
     return {
-        type: FETCH_GAME_COMMENTS_FAILURE
-    }
- }
+        type: FETCH_GAME_COMMENTS_FAILURE,
+        error: error
+    };
+ };
 
  export const fetchGameComments = (id) => {
      return dispatch => {
-         dispatch(fetchGameCommentsStart())
+         dispatch(fetchGameCommentsStart());
 
          axios.get(`http://54.225.49.92/comments/games/${id}`)
          .then(resp => dispatch(fetchGameCommentsSuccess(resp.data.comments)))
-         .catch(e => dispatch(fetchGameCommentsFailure()))
-     }
- }
+         .catch(err => dispatch(fetchGameCommentsFailure(err)))
+     };
+ };
 
- export const addComment = comment => {
-     console.log("IN ADD ACTION", comment)
+ export const addGameComment = (comment) => {
      return {
         type: ADD_COMMENT,
-        payload: comment
-     }
- }
- export const postComment = (comment) => {
+        comment: comment
+     };
+ };
+ export const postGameComment = (comment) => {
      console.log("POST", comment)
     return dispatch => {
         axios.post('http://54.225.49.92/comments', {
@@ -48,24 +48,49 @@
         }, {
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         })
-        .then(resp => dispatch(addComment(resp.data.comment)))
-        .catch(e => console.log("POST ERROR", e))
-    }
- }
+        .then(resp => {
+            console.log(resp);
+            dispatch(addGameComment(resp.data.comment))})
+        .catch(err => console.log("GAME POST ERROR", err))
+    };
+ };
 
- export const deleteComment = comment => {
+ export const deleteGameComment = (comment) => {
      return {
-         type: DELETE_COMMENT,
-         payload: comment
-     }
- }
+         type: DELETE_GAME_COMMENT,
+         comment: comment
+     };
+ };
 
- export const patchDeleteComment = id => {
-     return dispatch => {
+ export const patchDeleteGameComment = (id) => {
+    return dispatch => {
         axios.patch(`http://54.225.49.92/comments/delete/${id}`, {}, {
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         })
-        .then(resp => dispatch(deleteComment(resp.data.comment)))
-        .catch(e => console.log("PATCH ERROR", e))
-     }
- }
+        .then(resp => {
+            console.log("PATCH DELETe", resp)
+            dispatch(deleteGameComment(resp.data.comment))})
+        .catch(err => console.log("DELETE GAME COMMENT ERROR", err))
+    };
+};
+
+export const editGameComment = (comment) => {
+    return {
+        type: EDIT_GAME_COMMENT,
+        comment: comment
+    };
+};
+
+export const patchEditGameComment = (id, comment) => {
+    return dispatch => {
+        axios.patch(`http://54.225.49.92/comments/edit/${id}`, {
+            content: comment.content,
+            user_id: comment.user_id,
+            game_id: comment.game_id
+        }, {
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+        })
+        .then(resp => dispatch(editGameComment(resp.data.comment)))
+        .catch(err => console.log("EDIT GAME COMMENT ERROR", err))
+    };
+};

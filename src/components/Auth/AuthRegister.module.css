@@ -1,0 +1,93 @@
+.AuthRegisterContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 700px));
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.AuthRegisterForm {
+    border: 1px solid #a3a3a3;
+    padding: 20px;
+    margin: 80px;
+    border-radius: 10px;
+    /* background: #f5f5f5; */
+    box-shadow: 10px 10px 8px #888888;
+    /* display: grid; */
+    min-width: 300px;
+    /* display:grid; */
+    /* grid-template-columns: 1fr; */
+    /* text-align: center; */
+}
+
+.AuthRegisterForm h1 {
+    font-size: 2.5em;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.AuthRegisterForm input {
+    margin: 0 auto 25px;
+    height: 30px;
+    width: 220px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: .8em;
+    border: 1px solid #a3a3a3;
+    border-radius: 5px;
+    transition: all .2s ease-out;
+    display: block;
+}
+
+.AuthRegisterForm label {
+    display: none;
+}
+
+.AuthRegisterForm button {
+    background-color: #3388ff;
+    height: 3.1em;
+    width: 7em;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: .8em;
+    float: right;
+}
+
+.AuthRegisterForm input:focus + label {
+    display: inline-block;
+    font-size: .5em;
+    position: relative;
+    left: 140px;
+    bottom: 70px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    background-color: white;
+    padding: .1em .3em;
+}
+
+.AuthRegisterForm input::placeholder {
+    padding-left: 10px;
+}
+
+.AuthRegisterForm input:focus::placeholder {
+    color:transparent
+}
+
+@media only screen and (max-width: 414px) {
+    .AuthRegisterForm input:focus + label {
+        left: 40px;
+        bottom: 70px;
+    }
+  }
+
+
+
+
+
+/* .RegisterForm input:focus ~ .RegisterForm label {
+    border: 5px solid black;
+} */
+

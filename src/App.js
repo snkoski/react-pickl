@@ -9,6 +9,7 @@ import Register from './components/forms/Register';
 import { userFetchData, removeUser } from './actions/user';
 import { fetchVotes } from './actions/vote';
 import GamePage from './components/Game/GamePage';
+import Logout from './components/Auth/Logout/Logout';
 
 
 class App extends Component {

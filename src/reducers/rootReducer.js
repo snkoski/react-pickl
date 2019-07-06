@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux';
 import { user } from './userReducer';
-import { votes } from './voteReducer';
-import { teams } from './teamsReducer';
-import { games } from './gamesReducer';
-import { comments } from './commentsReducer';
+import votesReducer from './voteReducer';
+import teamsReducer from './teamsReducer';
+import gamesReducer from './gamesReducer';
+import commentsReducer from './commentsReducer';
+import authReducer from './auth';
 export default combineReducers({
     user,
-    votes,
-    teams,
-    games,
-    comments
+    votes: votesReducer,
+    teams: teamsReducer,
+    games: gamesReducer,
+    comments: commentsReducer,
+    auth: authReducer
 })

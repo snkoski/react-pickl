@@ -4,28 +4,34 @@ import axios from 'axios';
 export const fetchTeamsStart = () => {
     return {
         type: FETCH_TEAMS_START
-    }
-}
+    };
+};
 
-export const fetchTeamsSuccess = (data) => {
+export const fetchTeamsSuccess = (teams) => {
     return {
         type: FETCH_TEAMS_SUCCESS,
-        payload: data
-    }
-}
+        teams: teams
+    };
+};
 
-export const fetchTeamsFailure = () => {
+export const fetchTeamsFailure = (error) => {
     return {
-        type: FETCH_TEAMS_FAILURE
-    }
-}
+        type: FETCH_TEAMS_FAILURE,
+        error: error
+    };
+};
 
 export const fetchTeams = () => {
     return dispatch => {
-        dispatch(fetchTeamsStart())
+        dispatch(fetchTeamsStart());
 
         axios.get('http://54.225.49.92/teams')
-        .then(resp => dispatch(fetchTeamsSuccess(resp.data.team)))
-        .catch(e => dispatch(fetchTeamsFailure()))
-    }
-}
+        .then(resp => {
+            console.log("FETCH TEAM SUCCESS", resp)
+            dispatch(fetchTeamsSuccess(resp.data.team))
+        })
+        .catch(err => {
+            console.log("FETCH TEAM", err)
+            dispatch(fetchTeamsFailure(err))})
+    };
+};

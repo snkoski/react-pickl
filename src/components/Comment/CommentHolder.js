@@ -4,7 +4,6 @@ import Comment from './Comment';
 import classes from './CommentHolder.module.css';
 
 const CommentHolder = props => {
-    console.log("COMMENT HOLDER", props)
         if (props.comments) {
             return (
                 <div className={classes.CommentHolder}>

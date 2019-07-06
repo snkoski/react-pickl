@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { postComment } from '../../actions/comments';
+import { postGameComment } from '../../actions/comments';
 
 class CommentInput extends Component {
     constructor(props) {
@@ -17,19 +17,15 @@ class CommentInput extends Component {
 
     onSubmit = e => {
         e.preventDefault()
-
         const comment = {
-            user: this.props.user.id, 
+            user: this.props.user.userId, 
             game: this.props.game_id, 
             content: this.state.content
         }
-
-        this.props.postComment(comment)
-        
+        this.props.addComment(comment)
     }
 
     render() {
-        // console.log("COMMENT INPUT", this.props)
         return (
             <div>
                 <form noValidate onSubmit={this.onSubmit}>
@@ -48,9 +44,15 @@ class CommentInput extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user,
+        user: state.auth,
         comments: state.comments
     }
 }
 
-export default connect(mapStateToProps, { postComment })(CommentInput);
+const mapDispatchToProps = dispatch => {
+    return {
+        addComment: (comment) => dispatch(postGameComment(comment))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentInput);

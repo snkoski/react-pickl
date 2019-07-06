@@ -1,31 +1,42 @@
-import { FETCH_GAMES_START, FETCH_GAMES_SUCCESS, FETCH_GAMES_FAILURE } from "./types";
+import { FETCH_GAMES_START, FETCH_GAMES_SUCCESS, FETCH_GAMES_FAILURE, SELECT_GAME } from "./types";
 import axios from 'axios';
 
 export const fetchGamesStart = () => {
     return {
         type: FETCH_GAMES_START
-    }
-}
+    };
+};
 
-export const fetchGamesSuccess = (data) => {
+export const fetchGamesSuccess = (games) => {
     return {
         type: FETCH_GAMES_SUCCESS,
-        payload: data
-    }
-}
+        allGames: games
+    };
+};
 
-export const fetchGamesFailure = () => {
+export const fetchGamesFailure = (error) => {
     return {
-        type: FETCH_GAMES_FAILURE
-    }
-}
+        type: FETCH_GAMES_FAILURE,
+        error: error
+    };
+};
 
-export const fetchGames = () => {
+export const selectGame = (id) => {
+    return {
+        type: SELECT_GAME,
+        id: id
+    };
+};
+
+export const fetchTodaysGames = () => {
     return dispatch => {
-        dispatch(fetchGamesStart())
-
+        dispatch(fetchGamesStart());
         axios.get('http://54.225.49.92/games/today')
-        .then(resp => dispatch(fetchGamesSuccess(resp.data.game)))
-        .catch(e => dispatch(fetchGamesFailure()))
-    }
-}
+        .then(resp => {
+            dispatch(fetchGamesSuccess(resp.data.games))
+        })
+        .catch(err => {
+            dispatch(fetchGamesFailure(err.resp.data))
+        })
+    };
+};
