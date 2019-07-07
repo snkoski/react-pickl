@@ -13,33 +13,6 @@ class TeamContainer extends React.Component {
         };
     }
 
-    // componentDidMount() {
-    //     if (!!this.props.gameVote) {
-    //         this.setState({
-    //             teamContainerVote: this.props.gameVote.team
-    //         })
-    //     }
-    // }
-    // componentDidMount() {
-    //     console.log("[Team Container] DID MOUNT", this.props)
-    //     let vote = this.props.votes.filter(vote => {
-    //         return this.props.gameID === vote.game
-    //     })
-    //     if (vote[0]) {
-    //         this.setState({
-    //             currentVote: vote[0].team
-    //         })
-    //     }
-        
-    // }
-    // componentDidMount() {
-    //     if (this.props.vote[0]) {
-    //         console.log("[TEAM CONTAINER] DID MOUNT", this.props)
-    //         this.setState({
-    //              currentVote: this.props.vote[0].team
-    //        })
-    //     }
-    // }
     componentDidMount() {
         if (this.props.vote) {
             this.setState({
@@ -61,14 +34,6 @@ class TeamContainer extends React.Component {
 
 
     render() {
-        // let currentVote = this.props.votes.filter(vote => {
-        //     return this.props.gameID === vote.game
-        // })
-        // if (this.props.vote) {
-        //     this.setState({
-        //          currentVote: this.props.vote.team
-        //    })
-        // }
 
         let awayVotes = this.props.numVotes.find(numVote => (numVote.team_id === this.props.awayTeam.id) && (numVote.game_id === this.props.gameID))
 
@@ -78,11 +43,6 @@ class TeamContainer extends React.Component {
             <div className={classes.TeamContainer}>
                 <TeamCard team={this.props.awayTeam} 
                     gameID={this.props.gameID} 
-                    // handleVote={this.props.handleVote} 
-                    // gameColor={this.state.gameColor} 
-                    // buttonToggle={this.toggleButtonColor} 
-                    // votedTeam={this.state.votedTeam} 
-                    // teamContainerVote={this.state.teamContainerVote}
                     numVotes={awayVotes}
                     currentVote={this.state.currentVote}
                     vote={this.props.vote}
@@ -90,11 +50,6 @@ class TeamContainer extends React.Component {
                     />
                 <TeamCard team={this.props.homeTeam} 
                     gameID={this.props.gameID} 
-                    // handleVote={this.props.handleVote} 
-                    // gameColor={this.state.gameColor} 
-                    // buttonToggle={this.toggleButtonColor} 
-                    // votedTeam={this.state.votedTeam} 
-                    // teamContainerVote={this.state.teamContainerVote}
                     numVotes={homeVotes}
                     currentVote={this.state.currentVote}
                     vote={this.props.vote}
