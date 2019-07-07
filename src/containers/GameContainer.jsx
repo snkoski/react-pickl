@@ -5,6 +5,7 @@ import GameCard from '../components/Game/GameCard';
 import { fetchTeams } from '../actions/teams';
 import { fetchTodaysGames } from '../actions/games';
 import { fetchVotes } from '../actions/vote';
+import { fetchNumVotes } from '../actions/numVotes';
 
 import classes from './GameContainer.module.css';
 import { Button } from 'antd'
@@ -15,6 +16,7 @@ class GameContainer extends Component {
         console.log("DID MOUNT")
         this.props.getTeams();
         this.props.getTodaysGames();
+        this.props.getNumVotes();
         if (localStorage.getItem('userId')) {
             this.props.getVotes(localStorage.getItem('userId'))
         }
@@ -29,7 +31,8 @@ class GameContainer extends Component {
     // }
 
     render() {
-        const { teams, games, votes } = this.props
+        console.log("GAME CONTAINER", this.props)
+        const { teams, games, votes, numVotes } = this.props
         let loggedIn = !!this.props.authUser
         if (games === null || teams === null) {
             return null
@@ -58,6 +61,9 @@ class GameContainer extends Component {
 
                     let homeTeam = teams.filter(team => team.id === game.home_team)
 
+                    let awayVotes = numVotes.find(numVotes => numVotes.team_id === game.away_team)
+
+                    let homeVotes = numVotes.find(numVotes => numVotes.team_id === game.home_team)
                     
                     // let vote = votes.filter(vote => game.id === vote.game )
                     let vote = votes.find(vote => game.id === vote.game)
@@ -68,7 +74,9 @@ class GameContainer extends Component {
                         game={game} 
                         currentUser={this.props.currentUser} 
                         awayTeam={awayTeam[0]} 
-                        homeTeam={homeTeam[0]} 
+                        homeTeam={homeTeam[0]}
+                        awayVotes={awayVotes}
+                        homeVotes={homeVotes}
                         vote={vote}
                         // handleVote={this.handleVote} 
                     />
@@ -83,7 +91,8 @@ const mapStateToProps = state => {
         teams: state.teams.teams,
         votes: state.votes.votes,
         games: state.games.allGames,
-        authUser: state.auth.userId
+        authUser: state.auth.userId,
+        numVotes: state.numVotes.numVotes
     }
 }
 
@@ -91,7 +100,8 @@ const mapDispatchToProps = dispatch => {
     return {
         getTeams: () => dispatch(fetchTeams()),
         getTodaysGames: () => dispatch(fetchTodaysGames()),
-        getVotes: (id) => dispatch(fetchVotes(id))
+        getVotes: (id) => dispatch(fetchVotes(id)),
+        getNumVotes: () => dispatch(fetchNumVotes())
     };
 };
 

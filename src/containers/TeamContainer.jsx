@@ -40,10 +40,14 @@ class TeamContainer extends React.Component {
     //        })
     //     }
     // }
+    componentDidMount() {
+        if (this.props.vote) {
+            this.setState({
+                 currentVote: this.props.vote.team
+           })
+        }
+    }
     shouldComponentUpdate(prevProps) {
-        console.log("SHOULD COMPONENT UPDATE PREV:", prevProps.votes)
-        console.log("________________________________________________")
-        console.log("SHOULD COMPONENT UPDATE new:", this.props.votes)
         return this.props.votes !== prevProps.votes
     }
     
@@ -60,12 +64,16 @@ class TeamContainer extends React.Component {
         // let currentVote = this.props.votes.filter(vote => {
         //     return this.props.gameID === vote.game
         // })
-        if (this.props.vote) {
-            console.log("[TEAM CONTAINER] DID MOUNT", this.props)
-            this.setState({
-                 currentVote: this.props.vote.team
-           })
-        }
+        // if (this.props.vote) {
+        //     this.setState({
+        //          currentVote: this.props.vote.team
+        //    })
+        // }
+
+        let awayVotes = this.props.numVotes.find(numVote => (numVote.team_id === this.props.awayTeam.id) && (numVote.game_id === this.props.gameID))
+
+        let homeVotes = this.props.numVotes.find(numVote => (numVote.team_id === this.props.homeTeam.id) && (numVote.game_id === this.props.gameID))
+
         return (
             <div className={classes.TeamContainer}>
                 <TeamCard team={this.props.awayTeam} 
@@ -75,6 +83,7 @@ class TeamContainer extends React.Component {
                     // buttonToggle={this.toggleButtonColor} 
                     // votedTeam={this.state.votedTeam} 
                     // teamContainerVote={this.state.teamContainerVote}
+                    numVotes={awayVotes}
                     currentVote={this.state.currentVote}
                     vote={this.props.vote}
                     voteButtonTeam={this.voteButtonTeam}
@@ -86,6 +95,7 @@ class TeamContainer extends React.Component {
                     // buttonToggle={this.toggleButtonColor} 
                     // votedTeam={this.state.votedTeam} 
                     // teamContainerVote={this.state.teamContainerVote}
+                    numVotes={homeVotes}
                     currentVote={this.state.currentVote}
                     vote={this.props.vote}
                     voteButtonTeam={this.voteButtonTeam}
@@ -96,9 +106,9 @@ class TeamContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log("[Team Container] mapStateToProps")
     return {
-        votes: state.votes.votes
+        votes: state.votes.votes,
+        numVotes: state.numVotes.numVotes
     }
 }
 

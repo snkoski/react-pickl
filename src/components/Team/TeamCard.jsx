@@ -12,12 +12,17 @@ const TeamCard = props => {
     // if (props.currentVote && props.currentVote === props.team.id) {
     //     votedOn = true
     // }
-    console.log("[TEAM CARD] Before return PROPS: ", props.vote)
+    let v = 0; 
+    if (props.numVotes) {
+        v = props.numVotes.num_votes
+    }
+
     return(
     <div className={classes.TeamCard}>
         <p className={classes.City}>{props.team.city}</p>
         <p className={classes.Name}>{props.team.name}</p>
         <img className={`${votedOn ? '' : classes.BlackAndWhite}`} src={props.team.logo} alt="Team Logo"/>
+        <p>{v}</p>
         <VoteButton  teamID={props.team.id} gameID={props.gameID}  voteButtonTeam={props.voteButtonTeam} votedOn={votedOn}/>
     </div>
 )};

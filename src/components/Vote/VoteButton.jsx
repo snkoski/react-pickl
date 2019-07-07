@@ -2,19 +2,28 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { postVote } from '../../actions/vote';
+import { editNumVote, addNumVote } from '../../actions/numVotes';
 
 import classes from './VoteButton.module.css';
 
 class VoteButton extends Component {
 
-  handleClick = (game, team) => {
-    // console.log("VOTE BUTTON", this.props.votes)
+  handleClick = (gameID, team) => {
+    const votedAlready = this.props.votes.find(vote => vote.game === gameID)
     const vote = {
       user: this.props.user.userId,
-      game: game,
+      game: gameID,
       team: team
     }
+
     this.props.addVote(vote)
+    
+    if (votedAlready) {
+      this.props.editNum(vote)
+    } else {
+      this.props.addNum(vote)
+    }
+    
     this.props.voteButtonTeam(team)
   }
 
@@ -30,13 +39,16 @@ class VoteButton extends Component {
 const mapStateToProps = state => {
   return {
     user: state.auth,
-    votes: state.votes.votes
+    votes: state.votes.votes,
+    games: state.games.allGames
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    addVote: (vote) => dispatch(postVote(vote))
+    addVote: (vote) => dispatch(postVote(vote)),
+    editNum: (vote) => dispatch(editNumVote(vote)),
+    addNum: (vote) => dispatch(addNumVote(vote))
   }
 }
 

@@ -1,4 +1,4 @@
-import { FETCH_VOTES_START, FETCH_VOTES_SUCCESS, FETCH_VOTES_FAILURE, REMOVE_VOTES, NEW_VOTE, EDIT_VOTE } from '../actions/types';
+import { FETCH_VOTES_START, FETCH_VOTES_SUCCESS, FETCH_VOTES_FAILURE,  REMOVE_VOTES, NEW_VOTE, EDIT_VOTE } from '../actions/types';
 
 const initialState = {
     votes: [],
