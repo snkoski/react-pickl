@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/pickl/static/css/main.edac08d6.chunk.css",
-    "main.js": "/pickl/static/js/main.60dd7c9b.chunk.js",
-    "main.js.map": "/pickl/static/js/main.60dd7c9b.chunk.js.map",
-    "runtime~main.js": "/pickl/static/js/runtime~main.ffb26099.js",
-    "runtime~main.js.map": "/pickl/static/js/runtime~main.ffb26099.js.map",
-    "static/css/2.81a148de.chunk.css": "/pickl/static/css/2.81a148de.chunk.css",
-    "static/js/2.a21da85b.chunk.js": "/pickl/static/js/2.a21da85b.chunk.js",
-    "static/js/2.a21da85b.chunk.js.map": "/pickl/static/js/2.a21da85b.chunk.js.map",
-    "index.html": "/pickl/index.html",
-    "precache-manifest.41d68b5cde7d15729d796de9eb410051.js": "/pickl/precache-manifest.41d68b5cde7d15729d796de9eb410051.js",
-    "service-worker.js": "/pickl/service-worker.js",
-    "static/css/2.81a148de.chunk.css.map": "/pickl/static/css/2.81a148de.chunk.css.map",
-    "static/css/main.edac08d6.chunk.css.map": "/pickl/static/css/main.edac08d6.chunk.css.map"
+    "main.css": "/react-pickl/static/css/main.edac08d6.chunk.css",
+    "main.js": "/react-pickl/static/js/main.5825d270.chunk.js",
+    "main.js.map": "/react-pickl/static/js/main.5825d270.chunk.js.map",
+    "runtime~main.js": "/react-pickl/static/js/runtime~main.b64cd2b5.js",
+    "runtime~main.js.map": "/react-pickl/static/js/runtime~main.b64cd2b5.js.map",
+    "static/css/2.81a148de.chunk.css": "/react-pickl/static/css/2.81a148de.chunk.css",
+    "static/js/2.7bd71514.chunk.js": "/react-pickl/static/js/2.7bd71514.chunk.js",
+    "static/js/2.7bd71514.chunk.js.map": "/react-pickl/static/js/2.7bd71514.chunk.js.map",
+    "index.html": "/react-pickl/index.html",
+    "precache-manifest.c57016bccf91135d48d8801908ef513e.js": "/react-pickl/precache-manifest.c57016bccf91135d48d8801908ef513e.js",
+    "service-worker.js": "/react-pickl/service-worker.js",
+    "static/css/2.81a148de.chunk.css.map": "/react-pickl/static/css/2.81a148de.chunk.css.map",
+    "static/css/main.edac08d6.chunk.css.map": "/react-pickl/static/css/main.edac08d6.chunk.css.map"
   }
 }
