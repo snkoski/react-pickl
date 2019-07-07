@@ -2,7 +2,7 @@
   "name": "pickl-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://shawnkoski.com/react-pickl",
+  "homepage": "http://shawnkoski.com/react-pickl",
   "dependencies": {
     "antd": "^3.19.8",
     "axios": "^0.18.0",
