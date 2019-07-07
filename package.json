@@ -2,11 +2,13 @@
   "name": "pickl-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shawnkoski.com/react-pickl",
   "dependencies": {
     "antd": "^3.19.8",
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.12.0",
     "customize-cra": "^0.2.14",
+    "gh-pages": "^2.0.1",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "prop-types": "^15.7.2",
@@ -21,6 +23,8 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
