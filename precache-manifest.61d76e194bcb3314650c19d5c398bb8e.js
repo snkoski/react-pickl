@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5ec8b332839f1aae7b416862e322552d",
+    "revision": "da55b70f58d46b30f182bc943504fb9f",
     "url": "/react-pickl/index.html"
   },
   {
-    "revision": "032a3e205592bcc79bf3",
+    "revision": "95d267f8e72220dbc42b",
     "url": "/react-pickl/static/css/2.81a148de.chunk.css"
   },
   {
-    "revision": "e46ad087bff6ed84812a",
+    "revision": "87cfe20f92295c8cda3d",
     "url": "/react-pickl/static/css/main.edac08d6.chunk.css"
   },
   {
-    "revision": "032a3e205592bcc79bf3",
-    "url": "/react-pickl/static/js/2.7bd71514.chunk.js"
+    "revision": "95d267f8e72220dbc42b",
+    "url": "/react-pickl/static/js/2.d3d3bed8.chunk.js"
   },
   {
-    "revision": "e46ad087bff6ed84812a",
-    "url": "/react-pickl/static/js/main.511de736.chunk.js"
+    "revision": "87cfe20f92295c8cda3d",
+    "url": "/react-pickl/static/js/main.4fe8b546.chunk.js"
   },
   {
     "revision": "028cf10e3990b5d46d23",
