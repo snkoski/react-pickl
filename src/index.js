@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from './store';
-import { HashRouter as Router} from 'react-router-dom'; 
+import { BrowserRouter as Router} from 'react-router-dom'; 
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -11,7 +11,7 @@ import App2 from './App2';
 
 ReactDOM.render((
     <Provider store={configureStore()}>
-        <Router basename={'/react-pickl'}>
+        <Router>
             {/* <App /> */}
             <App2 />
         </Router>
