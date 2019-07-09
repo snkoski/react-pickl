@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "aws s3 sync build/ s3://react-pickl --acl public-read",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
