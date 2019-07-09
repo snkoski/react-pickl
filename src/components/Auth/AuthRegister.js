@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import Spinner from '../UI/Spinner/Spinner';
 import { register } from '../../actions/auth';
+
 import classes from './AuthRegister.module.css';
 
 class AuthRegister extends Component {

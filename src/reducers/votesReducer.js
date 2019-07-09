@@ -30,12 +30,11 @@ const editVote = (state, action) => {
     let newVoteState = state.votes.filter(vote => {
         return vote.id !== action.vote.id;
     })
-    // newVoteState = newVoteState.concat(action.vote);
     return { ...state, votes: newVoteState.concat(action.vote)}
 };
 
 const removeVotes = (state, action) => {
-    return { ... state, votes: [] };
+    return { ...state, votes: [] };
 };
 
 const votesReducer = (state = initialState, action) => {

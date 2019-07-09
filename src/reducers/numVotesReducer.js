@@ -22,10 +22,6 @@ const addNumVote = (state, action) => {
     let filteredNumVotes = state.numVotes.filter(numVote => numVote.team_id !== action.vote.team)
     let team = state.numVotes.find(numVote => numVote.team_id === action.vote.team)
     team.num_votes++
-    let newstate = filteredNumVotes.concat(team)
-    console.log("ADD NUM VOTE FILTERED: ", filteredNumVotes)
-    console.log("ADD NUM VOTE TEAM: ", team)
-    console.log("ADD NUM VOTE NEWSTATE: ", newstate)
     return { ...state, numVotes: [...filteredNumVotes.concat(team)] }
 }
 
@@ -39,8 +35,6 @@ const editNumVote = (state, action) => {
         teams[0].num_votes--
         teams[1].num_votes++
     }
-
-    console.log("NUM VOTE REDUCER", filteredNumVotes.concat(teams))
     return { ...state, numVotes: [...filteredNumVotes.concat(teams)] }
 };
 

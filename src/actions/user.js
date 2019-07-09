@@ -1,4 +1,4 @@
-import { USER_REAUTH, USER_REAUTH_SUCCESS, REMOVE_USER } from './types';
+import { USER_REAUTH_SUCCESS, REMOVE_USER } from './types';
 import axios from 'axios';
 
 export const userFetchReauthSuccess = (user) => {

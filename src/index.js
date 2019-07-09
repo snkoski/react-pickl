@@ -6,13 +6,11 @@ import { BrowserRouter as Router} from 'react-router-dom';
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import App from './App';
 import App2 from './App2';
 
 ReactDOM.render((
     <Provider store={configureStore()}>
         <Router basename={process.env.PUBLIC_URL}>
-            {/* <App /> */}
             <App2 />
         </Router>
     </Provider>

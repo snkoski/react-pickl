@@ -1,10 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import GamePage from '../../components/Game/GamePage';
-
-
+import PropTypes from 'prop-types';
 
 import TeamContainer from '../../containers/TeamContainer';
 
@@ -31,8 +27,6 @@ const GameCard = props => {
         <TeamContainer homeTeam={props.homeTeam} 
             awayTeam={props.awayTeam} 
             gameID={props.game.id} 
-            // gameVote={props.gameVote} 
-            // handleVote={props.handleVote} 
             vote={props.vote}
             user={props.currentUser}/>
         <p>{props.game.location}</p>

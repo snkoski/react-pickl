@@ -1,4 +1,4 @@
-import { USER_REAUTH, USER_REAUTH_SUCCESS, REMOVE_USER } from '../actions/types';
+import { USER_REAUTH_SUCCESS, REMOVE_USER } from '../actions/types';
 
 export function user(state = {}, action) {
 

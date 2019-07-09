@@ -24,7 +24,7 @@ const addGameComment = (state, action) => {
 
 const deleteGameComment = (state, action) => {
     let newCommentsState = state.comments.filter(comment => {
-        return comment.id != action.comment.id;
+        return comment.id !== action.comment.id;
     })
     newCommentsState = newCommentsState.concat(action.comment);
     newCommentsState = newCommentsState.sort((a, b) => {
@@ -35,7 +35,7 @@ const deleteGameComment = (state, action) => {
 
 const editGameComment = (state, action) => {
     let newCommentsState = state.comments.filter(comment => {
-        return comment.id != action.comment.id;
+        return comment.id !== action.comment.id;
     })
     newCommentsState = newCommentsState.concat(action.comment);
     newCommentsState = newCommentsState.sort((a, b) => {

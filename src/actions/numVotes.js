@@ -26,7 +26,6 @@ export const fetchNumVotes = () => {
         dispatch(fetchNumVotesStart());
         axios.get('http://54.225.49.92/votes/teams/today')
         .then(resp => {
-            console.log("NUM FETCH", resp)
             dispatch(fetchNumVotesSuccess(resp.data.num_votes))})
         .catch(err => dispatch(fetchNumVotesFailure(err)))
     };

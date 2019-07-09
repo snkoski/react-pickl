@@ -24,14 +24,11 @@ class TeamContainer extends React.Component {
         return this.props.votes !== prevProps.votes
     }
     
-
     voteButtonTeam = (id) => {
         this.setState({
             currentVote: id
         })
     }
-
-
 
     render() {
 

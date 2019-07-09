@@ -24,7 +24,6 @@ export const fetchVotesFailure = (error) => {
 export const fetchVotes = (id) => {
     return dispatch => {
         dispatch(fetchVotesStart());
-        console.log("FETCH VOTE START", id)
         axios.get(`http://54.225.49.92/votes/${id}/today`, {
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         })
@@ -54,7 +53,6 @@ export const editVote = (vote) => {
 };
 
 export const postVote = (vote) => {
-    console.log("BEFORE VOTE POST: ", vote)
     return dispatch => {
         axios.post('http://54.225.49.92/votes', {
             user_id: vote.user,
@@ -64,7 +62,6 @@ export const postVote = (vote) => {
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         })
         .then(resp => {
-            console.log("VOTE POST RESPONSE", resp)
             dispatch(newVote(resp.data.vote))})
         .catch(err => console.log("VOTE POST ERROR: ", err))
     };

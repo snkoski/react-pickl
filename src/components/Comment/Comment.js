@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { patchDeleteComment } from '../../actions/comments';
 
 import classes from './Comment.module.css';
 
@@ -26,7 +25,6 @@ const Comment = props => {
     }
     let days = props.comment.timestamp.split('T')[0];
 
-    console.log("DAYS", days)
     return (
         <div className={classes.Comment}>
             <span className={classes.commentor}>{props.comment.commentor.username}</span>

@@ -32,14 +32,12 @@ export const login = (username, password) => {
         };
         axios.post('http://54.225.49.92/login', loginData)
         .then(resp => {
-            console.log("LOGIN RESPONSE", resp);
             localStorage.setItem('token', resp.data.token);
             localStorage.setItem('userId', resp.data.user.id);
             localStorage.setItem('username', resp.data.user.username);
             dispatch(authSuccess(resp.data.token, resp.data.user.id, resp.data.user.username));
         })
         .catch(err => {
-            console.log(err);
             dispatch(authFail(err));
         })
     };
@@ -56,13 +54,11 @@ export const register = (username, email, password, confirmPassword) => {
         };
         axios.post('http://54.225.49.92/users', registerData)
         .then(resp => {
-                console.log(resp);
                 localStorage.setItem('token', resp.data.token);
                 localStorage.setItem('userId', resp.data.user.id);
                 dispatch(authSuccess(resp.data.token, resp.data.user.id, resp.data.user.username));
             })
             .catch(err => {
-                console.log(err);
                 dispatch(authFail(err));
             })
         };

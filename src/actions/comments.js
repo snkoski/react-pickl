@@ -39,7 +39,6 @@
      };
  };
  export const postGameComment = (comment) => {
-     console.log("POST", comment)
     return dispatch => {
         axios.post('http://54.225.49.92/comments', {
             user_id: comment.user,
@@ -49,7 +48,6 @@
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         })
         .then(resp => {
-            console.log(resp);
             dispatch(addGameComment(resp.data.comment))})
         .catch(err => console.log("GAME POST ERROR", err))
     };
@@ -68,7 +66,6 @@
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         })
         .then(resp => {
-            console.log("PATCH DELETe", resp)
             dispatch(deleteGameComment(resp.data.comment))})
         .catch(err => console.log("DELETE GAME COMMENT ERROR", err))
     };

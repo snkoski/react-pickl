@@ -4,8 +4,8 @@ import { Redirect } from 'react-router-dom';
 
 import Spinner from '../UI/Spinner/Spinner';
 import { login } from '../../actions/auth';
-import classes from './AuthLogin.module.css';
 
+import classes from './AuthLogin.module.css';
 
 class AuthLogin extends Component {
     constructor(){

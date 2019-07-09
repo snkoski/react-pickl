@@ -27,11 +27,9 @@ export const fetchTeams = () => {
 
         axios.get('http://54.225.49.92/teamz')
         .then(resp => {
-            console.log("FETCH TEAM SUCCESS", resp)
             dispatch(fetchTeamsSuccess(resp.data.teams))
         })
         .catch(err => {
-            console.log("FETCH TEAM", err)
             dispatch(fetchTeamsFailure(err))})
     };
 };
