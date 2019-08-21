@@ -6,6 +6,7 @@ import gamesReducer from './gamesReducer';
 import commentsReducer from './commentsReducer';
 import authReducer from './auth';
 import numVotesReducer from './numVotesReducer';
+import teamStatsReducer from './teamStatsReducer';
 export default combineReducers({
     user,
     votes: votesReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
     games: gamesReducer,
     comments: commentsReducer,
     auth: authReducer,
-    numVotes: numVotesReducer
+    numVotes: numVotesReducer,
+    stats: teamStatsReducer,
 })

@@ -1,0 +1,10 @@
+.Hi {
+    grid-column-start: 1;
+    grid-column-end: span 3;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+
+}

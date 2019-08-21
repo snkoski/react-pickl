@@ -1,4 +1,4 @@
-import { FETCH_TEAMS_START, FETCH_TEAMS_SUCCESS, FETCH_TEAMS_FAILURE } from "../actions/types";
+import { FETCH_TEAMS_START, FETCH_TEAMS_SUCCESS, FETCH_TEAMS_FAILURE } from '../actions/types';
 
 const initialState = {
     teams: null,

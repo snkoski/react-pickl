@@ -1,4 +1,4 @@
-import { FETCH_TEAMS_START, FETCH_TEAMS_SUCCESS, FETCH_TEAMS_FAILURE } from "./types";
+import { FETCH_TEAMS_START, FETCH_TEAMS_SUCCESS, FETCH_TEAMS_FAILURE } from './types';
 import axios from 'axios';
 
 export const fetchTeamsStart = () => {
@@ -30,6 +30,7 @@ export const fetchTeams = () => {
             dispatch(fetchTeamsSuccess(resp.data.teams))
         })
         .catch(err => {
-            dispatch(fetchTeamsFailure(err))})
+            dispatch(fetchTeamsFailure(err))
+        })
     };
 };

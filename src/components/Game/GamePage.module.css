@@ -1,4 +1,22 @@
 .GamePage {
-    padding-top: 75px;
+    padding: 75px 10px 0px;
+}
 
+.GamePageStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr) ); */
+    /* grid-template-rows: 1fr 1fr; */
+    justify-content: center;
+    align-content: center;
+    grid-gap: 10px;
+}
+
+.SubGrid {
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr);
+    grid-template-rows: 50px 1fr;
+    grid-gap: 2px;
+    justify-content: center;
+    /* align-self: center; */
 }

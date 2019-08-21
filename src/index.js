@@ -10,7 +10,7 @@ import App2 from './App2';
 
 ReactDOM.render((
     <Provider store={configureStore()}>
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router>
             <App2 />
         </Router>
     </Provider>
