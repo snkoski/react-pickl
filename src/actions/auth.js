@@ -32,6 +32,7 @@ export const login = (username, password) => {
         };
         axios.post('http://54.225.49.92/login', loginData)
         .then(resp => {
+            console.log("IN AUTH ACTION", resp)
             localStorage.setItem('token', resp.data.token);
             localStorage.setItem('userId', resp.data.user.id);
             localStorage.setItem('username', resp.data.user.username);

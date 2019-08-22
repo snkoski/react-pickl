@@ -31,13 +31,15 @@ class GamePage extends Component {
     }
 
     changeStat = (e) => {
+        // dataset.team = home or away. name = name of category
         const { name, dataset } = e.target;
-        console.log(this.state[dataset.team])
+        // Toogle showing and hiding stats if clicking button for same stat
         if (this.state[dataset.team] === this.props.stats[dataset.team][name]) {
             this.setState({
                 [dataset.team]: null,
             })
         } else {
+            // If you click a different button display new stats
             this.setState({
                 [dataset.team]: this.props.stats[dataset.team][name],
             })
