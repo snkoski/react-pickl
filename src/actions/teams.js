@@ -1,36 +1,32 @@
-import { FETCH_TEAMS_START, FETCH_TEAMS_SUCCESS, FETCH_TEAMS_FAILURE } from './types';
 import axios from 'axios';
+import {
+  FETCH_TEAMS_START,
+  FETCH_TEAMS_SUCCESS,
+  FETCH_TEAMS_FAILURE,
+} from './types';
 
-export const fetchTeamsStart = () => {
-    return {
-        type: FETCH_TEAMS_START
-    };
-};
+export const fetchTeamsStart = () => ({
+  type: FETCH_TEAMS_START,
+});
 
-export const fetchTeamsSuccess = (teams) => {
-    return {
-        type: FETCH_TEAMS_SUCCESS,
-        teams: teams
-    };
-};
+export const fetchTeamsSuccess = (teams) => ({
+  type: FETCH_TEAMS_SUCCESS,
+  teams,
+});
 
-export const fetchTeamsFailure = (error) => {
-    return {
-        type: FETCH_TEAMS_FAILURE,
-        error: error
-    };
-};
+export const fetchTeamsFailure = (error) => ({
+  type: FETCH_TEAMS_FAILURE,
+  error,
+});
 
-export const fetchTeams = () => {
-    return dispatch => {
-        dispatch(fetchTeamsStart());
+export const fetchTeams = () => (dispatch) => {
+  dispatch(fetchTeamsStart());
 
-        axios.get('http://54.225.49.92/teamz')
-        .then(resp => {
-            dispatch(fetchTeamsSuccess(resp.data.teams))
-        })
-        .catch(err => {
-            dispatch(fetchTeamsFailure(err))
-        })
-    };
+  axios.get('http://54.225.49.92/teamz')
+    .then((resp) => {
+      dispatch(fetchTeamsSuccess(resp.data.teams));
+    })
+    .catch((err) => {
+      dispatch(fetchTeamsFailure(err));
+    });
 };

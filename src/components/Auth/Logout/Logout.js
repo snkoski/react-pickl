@@ -6,20 +6,20 @@ import { logout } from '../../../actions/auth';
 import { removeVotes } from '../../../actions/vote';
 
 class Logout extends Component {
-    componentDidMount() {
-        this.props.removeVotes();
-        this.props.onLogout();
-    }
-    render () {
-        return <Redirect to='/' />
-    }
+  componentDidMount() {
+    const { removeVotes, onLogout } = this.props;
+    removeVotes();
+    onLogout();
+  }
+
+  render() {
+    return <Redirect to="/" />;
+  }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onLogout: () => dispatch(logout()),
-        removeVotes: () => dispatch(removeVotes())
-    };
-};
+const mapDispatchToProps = (dispatch) => ({
+  onLogout: () => dispatch(logout()),
+  removeVotes: () => dispatch(removeVotes()),
+});
 
 export default connect(null, mapDispatchToProps)(Logout);
