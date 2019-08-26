@@ -7,40 +7,33 @@ import { fetchGameComments, patchDeleteGameComment } from '../actions/comments';
 
 
 class CommentContainer extends Component {
+  componentDidMount() {
+    this.props.getComments(this.props.game_id);
+  }
 
-    componentDidMount() {
-        this.props.getComments(this.props.game_id)
+    handleDeleteComment = (id) => {
+      this.props.deleteComment(id);
     }
 
-    handleDeleteComment = id => {
-        this.props.deleteComment(id)
-    }
-
-    renderCommentInput = () => {
-        return (this.props.user.userId) ? <CommentInput game_id={this.props.game_id}/> : null;
-    }
+    renderCommentInput = () => ((this.props.user.userId) ? <CommentInput game_id={this.props.game_id} /> : null)
 
     render() {
-        return (
-            <div>
-                {this.renderCommentInput()}
-                <CommentHolder comments={this.props.comments} username={this.props.user.username} handleDeleteComment={this.handleDeleteComment}/>
-            </div>
-        )
-    }
-};
-const mapStateToProps = state => {
-    return {
-        comments: state.comments.comments,
-        user: state.auth
+      return (
+        <div>
+          {this.renderCommentInput()}
+          <CommentHolder comments={this.props.comments} username={this.props.user.username} handleDeleteComment={this.handleDeleteComment} />
+        </div>
+      );
     }
 }
+const mapStateToProps = (state) => ({
+  comments: state.comments.comments,
+  user: state.auth,
+});
 
-const mapDispatchToProps = dispatch => {
-    return {
-        getComments: (id) => dispatch(fetchGameComments(id)), 
-        deleteComment: (id) => dispatch(patchDeleteGameComment(id))
-    }
-}
+const mapDispatchToProps = (dispatch) => ({
+  getComments: (id) => dispatch(fetchGameComments(id)),
+  deleteComment: (id) => dispatch(patchDeleteGameComment(id)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentContainer);

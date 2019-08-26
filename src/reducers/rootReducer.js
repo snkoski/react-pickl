@@ -7,13 +7,14 @@ import commentsReducer from './commentsReducer';
 import authReducer from './auth';
 import numVotesReducer from './numVotesReducer';
 import teamStatsReducer from './teamStatsReducer';
+
 export default combineReducers({
-    user: userReducer,
-    votes: votesReducer,
-    teams: teamsReducer,
-    games: gamesReducer,
-    comments: commentsReducer,
-    auth: authReducer,
-    numVotes: numVotesReducer,
-    stats: teamStatsReducer,
-})
+  user: userReducer,
+  votes: votesReducer,
+  teams: teamsReducer,
+  games: gamesReducer,
+  comments: commentsReducer,
+  auth: authReducer,
+  numVotes: numVotesReducer,
+  stats: teamStatsReducer,
+});

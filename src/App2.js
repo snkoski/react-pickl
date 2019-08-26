@@ -12,41 +12,36 @@ import Logout from './components/Auth/Logout/Logout';
 import UserProfile from './components/User/UserProfile';
 
 class App2 extends Component {
+  componentDidMount() {
+    this.props.onTryAutoSignup();
+  }
 
-    componentDidMount() {
-        this.props.onTryAutoSignup()
-    }
-
-    render() {
-        console.log("))))))))))))))", this.props)
-        return (
-            <div className="App">
-                <AntNav auth={this.props.isAuthenticated}/>
-                <div>
-                    <Switch>
-                        <Route path='/login' component={AuthLogin} />
-                        <Route path='/register' component={AuthRegister} />
-                        <Route path='/games/:id' render={(routeProps) => (<GamePage {...routeProps} />)} />
-                        <Route path='/logout' component={Logout} />
-                        <Route path='/user' component={UserProfile} />
-                        <Route path='/' component={GameContainer} />
-                    </Switch>
-                </div>
-            </div>
-        );
-    }
+  render() {
+    console.log('))))))))))))))', this.props);
+    return (
+      <div className="App">
+        <AntNav auth={this.props.isAuthenticated} />
+        <div>
+          <Switch>
+            <Route path="/login" component={AuthLogin} />
+            <Route path="/register" component={AuthRegister} />
+            <Route path="/games/:id" render={(routeProps) => (<GamePage {...routeProps} />)} />
+            <Route path="/logout" component={Logout} />
+            <Route path="/user" component={UserProfile} />
+            <Route path="/" component={GameContainer} />
+          </Switch>
+        </div>
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = state => {
-    return {
-        isAuthenticated: state.auth.token !== null,
-    };
-};
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.token !== null,
+});
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onTryAutoSignup: () => dispatch(authCheckState())
-    };
-};
+const mapDispatchToProps = (dispatch) => ({
+  onTryAutoSignup: () => dispatch(authCheckState()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App2);

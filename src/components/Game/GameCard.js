@@ -6,49 +6,55 @@ import TeamContainer from '../../containers/TeamContainer';
 
 import classes from './GameCard.module.css';
 
-const GameCard = props => {
-
-    const formatTime = (time) => {
-        let splitTime = time.split(':');
-        let hour = splitTime[0];
-        let dd = 'AM';
-        hour = parseInt(hour, 10)
-        if (hour > 12) {
-            hour = hour - 12;
-            dd = 'PM';
-        }
-        let minute = splitTime[1];
-        let newTime = [hour,minute].join(':') + ` ${dd}`
-
-        return newTime
+const GameCard = (props) => {
+  const formatTime = (time) => {
+    const splitTime = time.split(':');
+    let hour = splitTime[0];
+    let dd = 'AM';
+    hour = parseInt(hour, 10);
+    if (hour > 12) {
+      hour -= 12;
+      dd = 'PM';
     }
-    return (
+    const minute = splitTime[1];
+    const newTime = `${[hour, minute].join(':')} ${dd}`;
+
+    return newTime;
+  };
+  const {
+    homeTeam, awayTeam, game, vote, currentUser,
+  } = props;
+  return (
     <div className={classes.GameCard}>
-        <TeamContainer homeTeam={props.homeTeam} 
-            awayTeam={props.awayTeam} 
-            gameID={props.game.id} 
-            vote={props.vote}
-            user={props.currentUser}/>
-        <p>{props.game.location}</p>
-        <p>{formatTime(props.game.time)}</p>
-        <Link to={{
-            pathname: `/games/${props.game.id}`,
-            state: {
-                homeTeam: props.homeTeam,
-                awayTeam: props.awayTeam,
-                game_id: props.game.id
-            }
-            }}>
-                <button >Check out the matchup</button>
-            </Link>
-    </div>)
+      <TeamContainer
+        homeTeam={homeTeam}
+        awayTeam={awayTeam}
+        gameID={game.id}
+        vote={vote}
+        user={currentUser}
+      />
+      <p>{game.location}</p>
+      <p>{formatTime(game.time)}</p>
+      <Link to={{
+        pathname: `/games/${game.id}`,
+        state: {
+          homeTeam,
+          awayTeam,
+          game_id: game.id,
+        },
+      }}
+      >
+        <button>Check out the matchup</button>
+      </Link>
+    </div>
+  );
 };
 
 GameCard.propTypes = {
-    awayTeam: PropTypes.object,
-    homeTeam: PropTypes.object,
-    game: PropTypes.object,
-    handleVote: PropTypes.func
-}
+  awayTeam: PropTypes.object,
+  homeTeam: PropTypes.object,
+  game: PropTypes.object,
+  handleVote: PropTypes.func,
+};
 
 export default GameCard;
